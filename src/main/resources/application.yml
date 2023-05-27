@@ -1,0 +1,17 @@
+server:
+  port: 8088
+
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://121.187.22.37:3308/librarysystem?serverTimezone=Asia/Seoul
+    username: root
+    password: password!
+  jpa:
+    hibernate:
+      ddl-auto: none #create update none
+
+    show-sql: true
+  main:
+    allow-circular-references: true
