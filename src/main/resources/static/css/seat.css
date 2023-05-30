@@ -1,0 +1,59 @@
+img {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+} img:hover { width: 70px; }
+
+#group_table {
+    margin: 0 auto;
+    border-spacing: 40px 20px;
+    width: 700px;
+}
+
+#title {
+    margin: 0 auto;
+    text-align: center;
+    background-color: #C0E2FB;
+    width: 700px;
+}
+
+
+.seat_table {
+    margin: 0 auto;
+    border-spacing: 10px;
+}
+
+.seat {
+    text-align: center;
+}
+
+.empty_seat {
+    background-color: #C0E2FB;
+    color: #000;
+    border: 0.5;
+    border-radius: 20px;
+    padding: 6px 20px;
+    height: 40px;
+    width: 80px;
+    font-size: 24px;
+}
+
+.using_seat {
+    background-color: #fff;
+    color: #000;
+    border: 0.5;
+    border-radius: 20px;
+    padding: 6px 20px;
+    height: 40px;
+    width: 80px;
+    font-size: 24px;
+}
+
+.my_button {
+
+    float: right;
+    background-color: #FFF;
+    border: 0px;
+    font-size: 24px;
+    width: 100px;
+}
