@@ -10,18 +10,19 @@ img {
     display: inline-block;
     background-color: skyblue;
     width: 90px;
-    height: 64px;
+    height: 60px;
     border-radius: 10px 0px 0px 10px;
     border: 1px solid black;
     vertical-align: top;
+    margin-top: 1px;
 }
 
-.container { margin-top: 7%; }
+.container { margin-top: 5%; }
 
 #search {
     width: 40%;
-    height: 60px;
-    font-size: 20px;
+    height: 56px;
+    font-size: 18px;
     border-radius: 0px 10px 10px 0px;
     padding-left: 20px;
     margin-left: -5.7px;
@@ -31,7 +32,7 @@ img {
     display: inline;
     background-color: skyblue;
     width: 75px;
-    height: 66px;
+    height: 62px;
     border-radius: 10px;
     border-color: skyblue;
     vertical-align: middle;
@@ -55,6 +56,23 @@ img {
 #three {
     display :inline-block;
     font-size: 20px;
+}
+
+.loginBox {
+    width: 300px;
+    height: 200px;
+    background-color: skyblue;
+    margin-top: 5%;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+#loginId {
+    display: block;
+    margin: 0 auto;
+}
+#loginPw {
+    display: block;
+    margin: 0 auto;
 }
 
 @media screen and (max-width:500px) {
