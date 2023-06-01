@@ -1,13 +1,16 @@
 package com.exclaimation.librarysystem.controller;
 
 
+import com.exclaimation.librarysystem.domain.Seat;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 
 @org.springframework.stereotype.Controller
-public class Controller {
+public class SeatController {
 
     @GetMapping("/seat")
     public String seat(Model model){
@@ -45,6 +48,14 @@ public class Controller {
 
         model.addAttribute("groups", groups);
 
-        return "seat";
+        return "seat/seat";
     }
+
+    @PostMapping("/seat")
+    public String updateSeat(@ModelAttribute Seat.Create form){
+
+        System.out.println(form);
+        return "redirect:/seat";
+    }
+
 }

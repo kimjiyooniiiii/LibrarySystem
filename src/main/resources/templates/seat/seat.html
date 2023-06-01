@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="css/seat.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/seat.js"></script>
+
+        
+    </head>
+    
+    <body>    
+       
+            
+
+
+    <table id="group_table">
+        <thead>
+            <h1 id="title">열람실 현황</h1>
+        </thead>
+        
+        <tbody>
+            <tr th:each="group_row : ${groups}">
+                <td th:each="group : ${group_row}">
+                    <table class="seat_table">
+                        <tr th:each="seat_row : ${group}">
+                            <td th:each="seat : ${seat_row}" class="btn-group">
+                                <button th:if="${seat % 2 == 0}" class="empty_seat"
+                                th:onclick="javascript:setValue([[${seat}]])">[[${seat}]]</button>
+                                <button th:if="${seat % 2 == 1}" class="using_seat">[[${seat}]]</button>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+        
+        <tfoot>
+            
+            <tr>
+                <td>
+                    <i style="background-color: #C0E2FB">&nbsp;&nbsp;&nbsp;</i>:예약가능
+                    <i style="background-color: #FFF; border: 1px solid black;">&nbsp;&nbsp;&nbsp;</i>:예약 불가능
+                </td>
+                <td class="btn-group">
+                    <button type="button" class="my_button">취소</button>
+                    <button type="button" class="my_button" th:onclick="javascript:submit()">확인</button>
+                </td>
+            </tr>         
+        </tfoot>
+        
+    </table>
+</body>
+
+</html>
