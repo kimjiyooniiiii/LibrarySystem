@@ -25,16 +25,19 @@
       <a href="seat" id="two">
         <div><h3>실시간 열람실</h3></div>
       </a>
-      <a href="/" id="three">
+      <a href="wishList" id="three">
         <div><h3>희망 도서 신청</h3></div>
       </a>
     </div>
 
     <div class="loginBox">
+      <h1>로그인</h1>
       <form method="post">
-        <input type="text" name="id" id="loginId">
-        <input type="password" name="pw" id="loginPw">
-        <button class="btn-login" type="submit">LOGIN</button>
+        <label for="loginId" id="labelId">아이디</label>
+        <input type="text" name="id" id="loginId" placeholder="아이디를 입력해주세요" autocomplete="off">
+        <label for="loginPw" id="labelPw">비밀번호</label>
+        <input type="password" name="pw" id="loginPw" placeholder="비밀번호를 입력해주세요" autocomplete="off">
+        <button id="btn-login" type="submit">LOGIN</button>
       </form>
     </div>
   </div>

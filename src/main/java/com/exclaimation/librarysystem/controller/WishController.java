@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class WishController {
-    @GetMapping("/wish")
-    public String wish() {
-        return "wish";
+    @GetMapping("/wishList")
+    public String wishList() {
+        return "wishList";
     }
 }

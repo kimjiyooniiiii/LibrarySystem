@@ -1,0 +1,37 @@
+img {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+} img:hover { width: 70px; }
+
+#wishTitle {
+    width: 700px;
+    text-align: center;
+    background-color: #C0E2FB;
+    margin: 0 auto;
+}
+
+table {
+    width: 700px;
+    border-spacing: 0px 20px;
+    margin: 0 auto;
+}
+td {
+    background-color: #C0E2FB;
+    padding: 5px 10px;
+}
+label {
+    font-size: 20px;
+}
+
+.listInfo {
+    height:20px;
+    font-size:20px;
+}
+
+#btn {
+    background-color: #C0E2FB;
+    border: 0px;
+    padding: 5px 10px;
+    float: right;
+}

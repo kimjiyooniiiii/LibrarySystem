@@ -6,15 +6,16 @@ img {
     margin: 0 auto;
 } img:hover { width: 75px; }
 
+
 #searchTitle {
     display: inline-block;
-    background-color: skyblue;
+    background-color: rgba(161, 205, 236, 1);
     width: 90px;
-    height: 60px;
+    height: 58px;
     border-radius: 10px 0px 0px 10px;
     border: 1px solid black;
     vertical-align: top;
-    margin-top: 1px;
+    margin-top: 1.6px;
 }
 
 .container { margin-top: 5%; }
@@ -23,6 +24,7 @@ img {
     width: 40%;
     height: 56px;
     font-size: 18px;
+    border: 1px solid;
     border-radius: 0px 10px 10px 0px;
     padding-left: 20px;
     margin-left: -5.7px;
@@ -30,11 +32,11 @@ img {
 
 #clickBtn {
     display: inline;
-    background-color: skyblue;
+    background-color: rgba(161, 205, 236, 1);
     width: 75px;
-    height: 62px;
+    height: 61px;
     border-radius: 10px;
-    border-color: skyblue;
+    border-color: rgba(161, 205, 236, 1);
     vertical-align: middle;
     margin-left: -3px;
     margin-bottom: 5px;
@@ -42,6 +44,7 @@ img {
 
 .menu {
     text-align: center;
+    margin-bottom: 20px;
 }
 #one {
     display :inline-block;
@@ -59,20 +62,50 @@ img {
 }
 
 .loginBox {
-    width: 300px;
-    height: 200px;
-    background-color: skyblue;
-    margin-top: 5%;
+    width: 400px;
+    height: 260px;
+    background-color: rgba(157, 204, 236, 0.64);
+    font-size: 15px;
+    border-radius: 5px;
     margin: 0 auto;
-    opacity: 0.8;
+}
+#labelId {
+   font-size: 14px;
+   margin-right: 270px;
+}
+#labelPw {
+   font-size: 14px;
+   margin-right: 258px;
 }
 #loginId {
     display: block;
+    width: 77.8%;
+    height: 35px;
+    border: 1px solid rgba(114, 143, 157, 0.93);
+    border-radius: 5px;
+    padding-left: 15px;
     margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
 #loginPw {
     display: block;
+    width: 77.8%;
+    height: 35px;
+    border: 1px solid rgba(114, 143, 157, 0.93);
+    border-radius: 5px;
+    padding-left: 15px;
     margin: 0 auto;
+    margin-top: 5px;
+}
+#btn-login {
+    width: 82%;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}#btn-login:active {
+    background-color: rgba(17, 48, 69, 0.25);
 }
 
 @media screen and (max-width:500px) {

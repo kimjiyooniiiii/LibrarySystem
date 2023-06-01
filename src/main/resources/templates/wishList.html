@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/wishList.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <a href="../"><img src="images/곰두리지휘자.png"></a>
+    <form action="/books/wish" method="post">
+        <div>
+            <h1 id="wishTitle">희망 도서 신청</h1>
+
+            <table>
+                <tbody>
+                <tr>
+                    <td><label for="name">제목</label>
+                        <input type="text" id="name" name="name" placeholder="제목을 입력하세요" class="listInfo" style="width:610px;"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="writer">저자</label>
+                        <input type="text" id="writer" name="writer" placeholder="저자를 입력하세요" class="listInfo" style="width:610px;"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="publisher">출판사</label>
+                        <input type="text" id="publisher" name="publisher" placeholder="출판사를 입력하세요" class="listInfo" style="width:590px;"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="since">발행년도</label>
+                        <input type="text" id="since" name="since" placeholder="발행년도를 입력하세요" class="listInfo" style="width:580px;"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="phone">연락 받을 전화번호</label>
+                        <input type="text" id="phone" name="phone" placeholder="전화번호를 입력하세요" class="listInfo" style="width:490px;"></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button type="submit" id="btn">신청</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+</body>
+</html>
