@@ -2,56 +2,56 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/wishList.css">
+    <link rel="stylesheet" href="/css/wishList.css">
     <title>Title</title>
 </head>
-</html>
+
 <body>
 <div class="container">
     <form action="/books/wish" method="post">
-        <div id="wishList"><h1>희망 도서 신청</h1></div>
+        <h1>희망 도서 신청</h1>
         <div>
-            <table style="margin: 0 auto;  width: 700px; border-spacing: 0px 20px;">
+            <table id="table">
                 <tbody>
                 <tr>
-                    <td style="background-color: #C0E2FB; padding: 5px 10px;"><label for="name"
-                                                                                     style=" font-size:20px;">제목</label>
+                    <td id = "td_background">
+                        <label for="name" style=" font-size:20px;">제목</label>
                         <input type="text" id="name" name="name" placeholder="제목을 입력하세요"
                                style="width:610px; height:20px; font-size:20px;"></td>
                 </tr>
 
                 <tr>
-                    <td style="background-color: #C0E2FB; padding: 5px 10px;"><label for="writer"
-                                                                                     style=" font-size:20px;">저자</label>
+                    <td id = "td_background2">
+                        <label for="writer" style=" font-size:20px;">저자</label>
                         <input type="text" id="writer" name="writer" placeholder="저자를 입력하세요"
                                style="width:610px; height:20px; font-size:20px;"></td>
                 </tr>
 
                 <tr>
-                    <td style="background-color: #C0E2FB; padding: 5px 10px;"><label for="publisher"
-                                                                                     style=" font-size:20px;">출판사</label>
+                    <td id = "td_background3">
+                        <label for="publisher" style=" font-size:20px;">출판사</label>
                         <input type="text" id="publisher" name="publisher" placeholder="출판사를 입력하세요"
                                style="width:590px; height:20px; font-size:20px;"></td>
                 </tr>
 
                 <tr>
-                    <td style="background-color: #C0E2FB; padding: 5px 10px;"><label for="since"
-                                                                                     style=" font-size:20px;">발행년도</label>
-                        <input type="text" id="since" name="since" placeholder="발행년도를 입력하세요"
+                    <td id = "td_background4">
+                        <label for="since" style=" font-size:20px;">발행년도</label>
+                        <input type="date" id="since" name="since" placeholder="발행년도를 입력하세요"
                                style="width:580px; height:20px; font-size:20px;"></td>
                 </tr>
 
                 <tr>
-                    <td style="background-color: #C0E2FB; padding: 5px 10px;"><label for="phone"
-                                                                                     style=" font-size:20px;">연락받을
+                    <td id = "td_background5">
+                        <label for="tel" style=" font-size:20px;">연락받을
                         전화번호</label>
-                        <input type="text" id="phone" name="phone" placeholder="전화번호를 입력하세요"
+                        <input type="tel" id="tel" name="tel" placeholder="전화번호를 입력하세요"
                                style="width:490px; height:20px; font-size:20px;"></td>
                 </tr>
 
                 <tr>
                     <td>
-                        <button style="float: right; background-color: #C0E2FB; padding: 5px 10px; border: 0px">신청
+                        <button id="button">신청
                         </button>
                     </td>
                 </tr>
@@ -65,3 +65,5 @@
 </div>
 
 </body>
+</html>
+

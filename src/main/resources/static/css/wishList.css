@@ -1,6 +1,36 @@
-#wishList {
+.container { text-align: center;}
+
+h1 {
     margin: 0 auto;
-    text-align: center;
     background-color: #C0E2FB;
     width: 700px;
+}
+
+.table {
+    margin: 0 auto;
+    width: 700px;
+    border-spacing: 0px 20px;
+}
+
+.td_background{
+background-color: #C0E2FB; padding: 5px 10px;
+}
+.td_background2{
+background-color: #C0E2FB; padding: 5px 10px;
+}
+.td_background3{
+background-color: #C0E2FB; padding: 5px 10px;
+}
+.td_background4{
+background-color: #C0E2FB; padding: 5px 10px;
+}
+.td_background5{
+background-color: #C0E2FB; padding: 5px 10px;
+}
+
+.button {
+float: right;
+background-color: #C0E2FB;
+padding: 5px 10px;
+border: 0px;
 }

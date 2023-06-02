@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="container">
+  <div>
+    <h1>이용자 대출 현황 </h1>
+    <table border ="1" width="50%" height=200 bordercolor="black">
+      <thead>
+      <tr>
+        <th colspan="4">대출 목록</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>studentId</td>
+        <td>bookId</td>
+        <td>bookName</td>
+        <td>author</td>
+        <td>publisher</td>
+        <td>startDay</td>
+        <td>finishDay</td>
+        <td>spareTime</td>
+
+      </tr>
+      <tr th:each="rent : ${rentList}">
+        <td th:text="${rent.student.studentId}"></td>
+        <td th:text="${rent.book.bookId}"></td>
+        <td th:text="${rent.book.title}"></td>
+        <td th:text="${rent.book.author}"></td>
+        <td th:text="${rent.book.publisher}"></td>
+        <td th:text="${rent.rentDt}"></td>
+        <td th:text="${rent.returnDt}"></td>
+        <td th:text="${rent.spareDt}"></td>
+        <td><a th:href="@{/books/{id}/returnBook(id = ${rent.rentId})}">반납</a></td>
+        <td><a th:href="@{/books/{id}/continue(id = ${rent.rentId})}">연장</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>

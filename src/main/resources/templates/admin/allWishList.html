@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="container">
+  <div>
+    <h1>이용자 희망 도서 관리 </h1>
+    <table border ="1" width="50%" height=200 bordercolor="black">
+      <thead>
+      <tr>
+        <th colspan="4">희망 도서 목록</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>studentId</td>
+        <td>studentPhone</td>
+        <td>bookName</td>
+        <td>author</td>
+        <td>publisher</td>
+        <td>price</td>
+        <td>publishDay</td>
+
+      </tr>
+      <tr th:each="book : ${books}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.phone}"></td>
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.publisher}"></td>
+        <td th:text="${book.price}"></td>
+        <td th:text="${book.publishDay}"></td>
+
+        <td><a th:href="@{/books/{id}/returnBook(id = ${book.id})}">반납</a></td>
+        <td><a th:href="@{/books/{id}/continue(id = ${book.id})}">연장</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>
