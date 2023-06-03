@@ -13,7 +13,7 @@
   <div class="container">
     <a href="/"><img href="#" src="images/곰두리지휘자.png"></a>
     <form method="post">
-      <div id="searchTitle"><h3>도서 검색</h3></div>
+      <div id="searchTitle"><h3 id="searchT">도서 검색</h3></div>
       <input type="text" name="title" placeholder="도서명, 도서 내용, 저자 등 검색어를 입력하세요." id="search">
       <button type="submit" id="clickBtn"></button>
     </form>
@@ -22,7 +22,7 @@
       <a href="/" id="one">
         <div><h3>나의 대출 현황</h3></div>
       </a>
-      <a href="seat" id="two">
+      <a href="/seat/seat" id="two">
         <div><h3>실시간 열람실</h3></div>
       </a>
       <a href="wishList" id="three">
@@ -39,6 +39,7 @@
         <input type="password" name="pw" id="loginPw" placeholder="비밀번호를 입력해주세요" autocomplete="off">
         <button id="btn-login" type="submit">LOGIN</button>
       </form>
+      <a href="members/new"><p>회원가입</p></a>
     </div>
   </div>
 </body>

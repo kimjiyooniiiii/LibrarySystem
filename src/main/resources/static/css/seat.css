@@ -1,5 +1,5 @@
 img {
-    display: block;
+    display: inline-block;
     width: 60px;
     margin: 0 auto;
 } img:hover { width: 70px; }
@@ -50,18 +50,14 @@ img {
 }
 
 .my_button {
-
     float: right;
     background-color: #FFF;
     border: 0px;
     font-size: 24px;
     width: 100px;
-<<<<<<< HEAD
-=======
 }
 
 .active, .btn-group button:hover {
     background-color: #3e8e41;
     border: 1px solid #3e8e41;
->>>>>>> origin/cslee
 }

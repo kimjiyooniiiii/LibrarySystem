@@ -1,11 +1,11 @@
-div { text-align: center;}
+div { text-align: center; }
 a { text-decoration: none; }
 img {
-    display: block;
-    width: 65px;
-    margin: 0 auto;
-} img:hover { width: 75px; }
+    display: inline-block;
+    width: 60px;
+} img:hover { width: 70px; }
 
+.container { margin-top: 2%; }
 
 #searchTitle {
     display: inline-block;
@@ -14,11 +14,10 @@ img {
     height: 58px;
     border-radius: 10px 0px 0px 10px;
     border: 1px solid black;
-    vertical-align: top;
-    margin-top: 1.6px;
+    vertical-align: middle;
+    margin-top: -3px;
 }
-
-.container { margin-top: 5%; }
+#searchT { font-size: 15.5px; }
 
 #search {
     width: 40%;
@@ -44,7 +43,7 @@ img {
 
 .menu {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 #one {
     display :inline-block;
@@ -62,20 +61,21 @@ img {
 }
 
 .loginBox {
-    width: 400px;
-    height: 260px;
+    width: 430px;
+    height: 300px;
     background-color: rgba(157, 204, 236, 0.64);
     font-size: 15px;
     border-radius: 5px;
     margin: 0 auto;
 }
+
 #labelId {
    font-size: 14px;
-   margin-right: 270px;
+   margin-right: 295px;
 }
 #labelPw {
    font-size: 14px;
-   margin-right: 258px;
+   margin-right: 285px;
 }
 #loginId {
     display: block;

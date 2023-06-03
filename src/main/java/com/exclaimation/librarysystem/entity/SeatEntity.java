@@ -17,6 +17,5 @@ public class SeatEntity {
 
     @Column
     private boolean isUsed;
-
 }
 
