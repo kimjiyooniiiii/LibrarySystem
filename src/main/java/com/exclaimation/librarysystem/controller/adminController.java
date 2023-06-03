@@ -1,6 +1,7 @@
 package com.exclaimation.librarysystem.controller;
 
 import com.exclaimation.librarysystem.entity.Rent;
+import com.exclaimation.librarysystem.entity.Require;
 import com.exclaimation.librarysystem.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,8 +34,12 @@ public class adminController {
         return "admin/rentList";
     }
 
-    @GetMapping("/allWishList")
-    public String allWishList() {
-        return "admin/allWishList";
+    // 희망 도서 목록 보기
+    @GetMapping("/requireList")
+    public String requireList(Model model) {
+        List<Require> requireList = adminService.showRequireList();
+        model.addAttribute("requireList", requireList);
+
+        return "admin/requireList";
     }
 }

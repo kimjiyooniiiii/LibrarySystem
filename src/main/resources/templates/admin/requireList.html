@@ -21,21 +21,17 @@
         <td>bookName</td>
         <td>author</td>
         <td>publisher</td>
-        <td>price</td>
-        <td>publishDay</td>
+        <td>publishYear</td>
 
       </tr>
-      <tr th:each="book : ${books}">
-        <td th:text="${student.id}"></td>
-        <td th:text="${student.phone}"></td>
-        <td th:text="${book.name}"></td>
-        <td th:text="${book.author}"></td>
-        <td th:text="${book.publisher}"></td>
-        <td th:text="${book.price}"></td>
-        <td th:text="${book.publishDay}"></td>
+      <tr th:each="require : ${requireList}">
+        <td th:text="${require.student.studentId}"></td>
+        <td th:text="${require.student.phone}"></td>
+        <td th:text="${require.title}"></td>
+        <td th:text="${require.author}"></td>
+        <td th:text="${require.publisher}"></td>
+        <td th:text="${require.year}"></td>
 
-        <td><a th:href="@{/books/{id}/returnBook(id = ${book.id})}">반납</a></td>
-        <td><a th:href="@{/books/{id}/continue(id = ${book.id})}">연장</a></td>
       </tr>
       </tbody>
     </table>

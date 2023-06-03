@@ -8,6 +8,6 @@ public class BookController {
 
     @GetMapping("/books/wishForm")
     public String wishBook() {
-        return "wishList";
+        return "wishForm";
     }
 }
