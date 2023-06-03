@@ -31,14 +31,14 @@ public class MemberService {
     }
 
     private void validateDuplicateMember(Member member) {
-//        Optional<Member> result = memberRepository.findByName(member.getName());
-//        result.ifPresent(m -> {
-//            throw new IllegalStateException("이미 존재하는 회원입니다.");
-//        });
-//            memberRepository.findByName(member.getName())
-//                    .ifPresent(m -> {
-//                        throw new IllegalStateException("이미 존재하는 회원입니다.");
-//                    });
+        Optional<Member> result = memberRepository.findById(member.getId());
+        result.ifPresent(m -> {
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        });
+            memberRepository.findById(member.getId())
+                    .ifPresent(m -> {
+                        throw new IllegalStateException("이미 존재하는 회원입니다.");
+                    });
     }
 
     /**

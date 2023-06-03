@@ -1,0 +1,12 @@
+div { text-align: center; }
+a { text-decoration: none; }
+img {
+    display: inline-block;
+    width: 60px;
+} img:hover { width: 70px; }
+
+table {
+    width: 50%;
+    height: 200px;
+    margin: 0 auto;
+}

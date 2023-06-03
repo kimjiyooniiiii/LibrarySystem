@@ -1,0 +1,128 @@
+div { text-align: center; }
+a { text-decoration: none; }
+img {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+} img:hover { width: 70px; }
+
+.container { margin-top: 2%; }
+
+#searchTitle {
+    display: inline-block;
+    background-color: rgba(161, 205, 236, 1);
+    width: 90px;
+    height: 58px;
+    border-radius: 10px 0px 0px 10px;
+    border: 1px solid black;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+#searchT { font-size: 15.5px; }
+
+#search {
+    width: 40%;
+    height: 56px;
+    font-size: 18px;
+    border: 1px solid;
+    border-radius: 0px 10px 10px 0px;
+    padding-left: 20px;
+    margin-left: -5.7px;
+}
+
+#clickBtn {
+    display: inline;
+    background-color: rgba(161, 205, 236, 1);
+    width: 75px;
+    height: 61px;
+    border-radius: 10px;
+    border-color: rgba(161, 205, 236, 1);
+    vertical-align: middle;
+    margin-left: -3px;
+    margin-bottom: 5px;
+}
+
+.menu {
+    text-align: center;
+    margin-bottom: 10px;
+}
+#one {
+    display :inline-block;
+    font-size: 20px;
+    margin-right: 50px;
+}
+#three {
+    display :inline-block;
+    font-size: 20px;
+}
+
+.loginBox {
+    width: 430px;
+    height: 300px;
+    background-color: rgba(157, 204, 236, 0.64);
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+#labelId {
+   font-size: 14px;
+   margin-right: 295px;
+}
+#labelPw {
+   font-size: 14px;
+   margin-right: 285px;
+}
+#loginId {
+    display: block;
+    width: 77.8%;
+    height: 35px;
+    border: 1px solid rgba(114, 143, 157, 0.93);
+    border-radius: 5px;
+    padding-left: 15px;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+#loginPw {
+    display: block;
+    width: 77.8%;
+    height: 35px;
+    border: 1px solid rgba(114, 143, 157, 0.93);
+    border-radius: 5px;
+    padding-left: 15px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+#btn-login {
+    width: 82%;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}#btn-login:active {
+    background-color: rgba(17, 48, 69, 0.25);
+}
+
+@media screen and (max-width:500px) {
+    /* 모바일 CSS*/
+    img {
+        display: block;
+        width: 65px;
+        margin-left: 44%;
+    }
+
+    #one {
+        display :inline-block;
+        font-size: 17px;
+        margin-left: 50px;
+    }
+    #two {
+        display :inline-block;
+        font-size: 17px;
+        margin-left: 50px;
+    }
+    #three {
+        font-size: 17px;
+    }
+}

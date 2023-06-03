@@ -35,8 +35,8 @@ label {
 }
 
 #btn {
-    background-color: #C0E2FB;
-    border: 0px;
-    padding: 5px 10px;
     float: right;
+    background-color: #C0E2FB;
+    padding: 5px 10px;
+    border: 0px;
 }
