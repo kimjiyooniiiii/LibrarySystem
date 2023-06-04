@@ -10,8 +10,13 @@ spring:
     password: password!
   jpa:
     hibernate:
-      ddl-auto: none #create update none
+      ddl-auto: update #create update none
 
     show-sql: true
   main:
     allow-circular-references: true
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

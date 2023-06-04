@@ -1,0 +1,54 @@
+table{
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto; /* 테이블을 수평 가운데로 정렬 */
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    padding: 8px;
+    font-family: sans-serif;
+}
+
+td.left{
+     text-align: left;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+h4 {
+    width: 50%;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 2em;
+    text-transform: uppercase;
+    background: #9fd0ff;
+    margin: 0 auto; /* h2를 수평 가운데로 정렬 */
+}
+
+strong {
+    font-weight: 700;
+    background-color: yellow;
+}
+
+p {
+    font-family: sans-serif;
+}
+.none{
+    border-top : none;
+    border-bottom: none;
+}
+.css1{
+    width: 80px;
+    background: #9FD0FFFF;
+}
+.css2{
+    width: 80px;
+    background: #f64568;
+}
