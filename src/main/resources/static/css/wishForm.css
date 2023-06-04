@@ -1,8 +1,13 @@
+div { text-align: center; }
 img {
-    display: block;
+    display: inline-block;
     width: 60px;
-    margin: 0 auto;
 } img:hover { width: 70px; }
+
+.container {
+    margin: 0 auto;
+    margin-top: 2%;
+}
 
 #wishTitle {
     width: 700px;
@@ -30,8 +35,8 @@ label {
 }
 
 #btn {
-    background-color: #C0E2FB;
-    border: 0px;
-    padding: 5px 10px;
     float: right;
+    background-color: #C0E2FB;
+    padding: 5px 10px;
+    border: 0px;
 }

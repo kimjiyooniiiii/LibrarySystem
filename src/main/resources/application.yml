@@ -9,8 +9,12 @@ spring:
     username: root
     password: password!
   jpa:
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
     hibernate:
       ddl-auto: update #create update none
+
 
     show-sql: true
   main:
