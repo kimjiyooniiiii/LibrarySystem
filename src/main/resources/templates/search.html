@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+<!--    <link rel="stylesheet" type="text/css" href="/css/search.css">-->
+    <title>홈페이지</title>
+    <link th:href="@{/css/search.css}" rel="stylesheet">
+</head>
+<body>
+<h4><span th:text="${keyword}"></span> 검색 결과</h4>
+
+<table>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"></td>
+        <td th:class="left" th:text ="${book.name}"></td>
+        <td th:class = "${book.available == '대출 가능'}? 'css1' : 'css2'" th:text="${book.available}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
