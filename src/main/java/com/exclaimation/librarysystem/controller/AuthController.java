@@ -26,23 +26,6 @@ public class AuthController {
     }
 
 
-    @GetMapping("/loginSuccess")
-    public String loginSuccess(@AuthenticationPrincipal User user, Model model){
-        model.addAttribute("loginId", user.getUsername());
-        model.addAttribute("loginRoles", user.getAuthorities());
-        return "authIndex";
-    }
-
-    @PostMapping("/login-process")
-    public String login(Model model, LoginRequest request){
-        boolean isValidMember = authService.isValidMember(request.getId(), request.getPw());
-//        Student student = authService.findUser(request.getId()).orElseThrow(() -> new NullPointerException("없는 사용자"));
-
-        if (isValidMember)
-            return "redirect:/auth/loginSuccess";
-        return "login";
-    }
-
     @PostMapping("/join")
     public ResponseEntity<String> join(@RequestBody JoinRequest request){
         try{

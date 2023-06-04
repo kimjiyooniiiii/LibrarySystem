@@ -24,8 +24,9 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests(request ->
                         request
                                 .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                                .requestMatchers("/images/**", "/auth/**", "/css/**").permitAll()
+                                .requestMatchers("/images/**", "/auth/**", "/css/**", "/user/**" ,"/").permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/seat/**", "/user/**").hasRole("USER")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
@@ -33,7 +34,7 @@ public class SpringSecurityConfig {
                         .loginProcessingUrl("/auth/login-process")
                         .usernameParameter("id")
                         .passwordParameter("pw")
-                        .defaultSuccessUrl("/auth/loginSuccess", true)
+                        .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
                 .logout(withDefaults());

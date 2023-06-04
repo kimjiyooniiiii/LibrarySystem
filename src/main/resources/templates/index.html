@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
 
 <body>
   <div class="container">
-    <a href="/"><img href="#" src="images/곰두리지휘자.png"></a>
+    <a href="/"><img href="#" src="/images/곰두리지휘자.png"></a>
     <form method="post">
       <div id="searchTitle"><h3>도서 검색</h3></div>
       <input type="text" name="title" placeholder="도서명, 도서 내용, 저자 등 검색어를 입력하세요." id="search">
@@ -22,23 +22,28 @@
       <a href="/" id="one">
         <div><h3>나의 대출 현황</h3></div>
       </a>
-      <a href="seat" id="two">
+      <a href="/seat" id="two">
         <div><h3>실시간 열람실</h3></div>
       </a>
-      <a href="wishList" id="three">
+      <a href="/wishList" id="three">
         <div><h3>희망 도서 신청</h3></div>
       </a>
     </div>
 
-    <div class="loginBox">
+    <div class="loginBox" sec:authorize="!isAuthenticated">
       <h1>로그인</h1>
-      <form method="post" action="/auth/login-process">
+      <form method="post" action="/auth/login-process" >
         <label for="loginId" id="labelId">아이디</label>
         <input type="text" name="id" id="loginId" placeholder="아이디를 입력해주세요" autocomplete="off">
         <label for="loginPw" id="labelPw">비밀번호</label>
         <input type="password" name="pw" id="loginPw" placeholder="비밀번호를 입력해주세요" autocomplete="off">
         <button id="btn-login" type="submit">LOGIN</button>
       </form>
+    </div>
+    <div class="loginBox" sec:authorize="isAuthenticated">
+      <p th:text = "${loginId}"></p>
+      <p th:text = "${loginRoles}"></p>
+      <a href="/logout">logout</a>
     </div>
   </div>
 </body>
