@@ -22,13 +22,13 @@
                     <table class="seat_table">
                         <tr th:each="seat_row : ${group}">
                             <td th:each="seat : ${seat_row}" class="btn-group">
-                                <button th:unless="${seat.isUsed}" class="empty_seat"
-                                        th:onclick="javascript:setValue([[${seat.seatId}]],[[${seat.isUsed}]])">
-                                    [[${seat.seatId}]]
+                                <button th:unless="${seat.enable}" class="empty_seat"
+                                        th:onclick="javascript:setValue([[${seat.seat_id}]],[[${seat.enable}]])">
+                                    [[${seat.seat_id}]]
                                 </button>
-                                <button th:if="${seat.isUsed}" class="using_seat"
-                                        th:onclick="javascript:setValue([[${seat.seatId}]],[[${seat.isUsed}]])">
-                                    [[${seat.seatId}]]
+                                <button th:if="${seat.enable}" class="using_seat"
+                                        th:onclick="javascript:setValue([[${seat.seat_id}]],[[${seat.enable}]])">
+                                    [[${seat.seat_id}]]
                                 </button>
                             </td>
                         </tr>

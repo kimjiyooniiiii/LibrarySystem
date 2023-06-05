@@ -27,8 +27,8 @@ public class JpaSeatRepository implements SeatRepository{
     }
 
     @Override
-    public Optional<SeatEntity> findById(Long seatId) {
-        SeatEntity seatEntity = em.find(SeatEntity.class, seatId);
+    public Optional<SeatEntity> findById(Long seat_id) {
+        SeatEntity seatEntity = em.find(SeatEntity.class, seat_id);
         return Optional.ofNullable(seatEntity);
     }
 }
