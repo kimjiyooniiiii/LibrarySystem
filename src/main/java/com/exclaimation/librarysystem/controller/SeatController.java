@@ -44,6 +44,7 @@ public class SeatController {
                     {
                         int seat_id = start+l+k*8-1;
                         seat_row.add(seats.get(seat_id));
+                        System.out.println(seats.get(seat_id));
                     }
                     group.add(seat_row);
                 }
@@ -60,7 +61,7 @@ public class SeatController {
     @PostMapping("/seat")
     public String updateSeat(Seat.Simple form, boolean isUsed){
 
-        form.setUsed(isUsed);
+        form.setEnable(isUsed);
         System.out.println(form);
 
         seatService.updateSeat(form);

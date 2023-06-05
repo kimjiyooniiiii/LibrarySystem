@@ -5,6 +5,8 @@ img {
     width: 60px;
 } img:hover { width: 70px; }
 
+.container { margin-top: 2%; }
+
 table {
     width: 50%;
     height: 200px;

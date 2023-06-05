@@ -1,9 +1,8 @@
 div { text-align: center; }
 a { text-decoration: none; }
 img {
-    display: block;
+    display: inline-block;
     width: 60px;
-    margin: 0 auto;
 } img:hover { width: 70px; }
 
 .container { margin-top: 2%; }
