@@ -21,7 +21,7 @@ public class SeatController {
         this.seatService = seatService;
     }
 
-    @GetMapping(value = "/seat/seat")
+    @GetMapping(value = "/seat")
     public String seat(Model model){
         // 48
         ArrayList<Seat.Simple> seats = (ArrayList<Seat.Simple>) seatService.findSeats();
