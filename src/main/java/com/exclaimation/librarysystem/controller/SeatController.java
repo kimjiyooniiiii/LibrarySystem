@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class SeatController {
         this.seatService = seatService;
     }
 
-    @GetMapping(value = "/seat/seat")
+    @GetMapping(value = "/seat")
     public String seat(Model model){
         // 48
         ArrayList<Seat.Simple> seats = (ArrayList<Seat.Simple>) seatService.findSeats();
@@ -58,9 +59,18 @@ public class SeatController {
     }
 
     @PostMapping("/seat")
-    public String updateSeat(Seat.Simple form, boolean isUsed){
+    public String updateSeat(@RequestParam(value="seat_id") Long seat_id,
+        @RequestParam(value="student_id") String student_id,
+        @RequestParam(value="enable") Long enable){
 
-        form.setUsed(isUsed);
+        Seat.Simple form = new Seat.Simple();
+        form.setSeat_id(seat_id);
+        form.setStudent_id(student_id);
+
+        boolean b_enable = true;
+        if (enable == 0) b_enable = false;
+        form.setEnable(b_enable);
+
         System.out.println(form);
 
         seatService.updateSeat(form);
