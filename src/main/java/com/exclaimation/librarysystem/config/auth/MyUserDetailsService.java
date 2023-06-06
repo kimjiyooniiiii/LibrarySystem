@@ -1,6 +1,6 @@
 package com.exclaimation.librarysystem.config.auth;
 
-import com.exclaimation.librarysystem.domain.Student;
+import com.exclaimation.librarysystem.entity.Student;
 import com.exclaimation.librarysystem.service.AuthService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

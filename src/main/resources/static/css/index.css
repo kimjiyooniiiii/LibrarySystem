@@ -74,8 +74,12 @@ img {
    margin-right: 295px;
 }
 #labelPw {
-   font-size: 14px;
-   margin-right: 285px;
+    font-size: 14px;
+    margin-right: 285px;
+}
+#labelRePw {
+    font-size: 14px;
+    margin-right: 260px;
 }
 #loginId {
     display: block;
@@ -89,6 +93,17 @@ img {
     margin-bottom: 15px;
 }
 #loginPw {
+    display: block;
+    width: 77.8%;
+    height: 35px;
+    border: 1px solid rgba(114, 143, 157, 0.93);
+    border-radius: 5px;
+    padding-left: 15px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+#PwCheck {
     display: block;
     width: 77.8%;
     height: 35px;

@@ -1,6 +1,6 @@
 package com.exclaimation.librarysystem.service;
 
-import com.exclaimation.librarysystem.domain.Student;
+import com.exclaimation.librarysystem.entity.Student;
 import com.exclaimation.librarysystem.repository.StudentRepository;
 import com.sun.jdi.request.DuplicateRequestException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,10 +24,10 @@ public class AuthService {
     }
 
     public boolean isValidMember(String id, String pw) {
-        return repository.existsByStudentIdAndPassword(id, passwordEncoder.encode(pw));
+        return !repository.existsByStudentIdAndPassword(id, passwordEncoder.encode(pw));
     }
 
-    public Student join(String id, String password) {
+    public Student register(String id, String password) {
         Student student = Student.builder()
                 .studentId(id)
                 .password(passwordEncoder.encode(password))

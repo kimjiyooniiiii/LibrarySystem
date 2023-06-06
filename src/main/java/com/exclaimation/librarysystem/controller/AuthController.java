@@ -1,14 +1,10 @@
 package com.exclaimation.librarysystem.controller;
 
-import com.exclaimation.librarysystem.domain.Student;
-import com.exclaimation.librarysystem.dto.JoinRequest;
-import com.exclaimation.librarysystem.dto.LoginRequest;
+import com.exclaimation.librarysystem.dto.RegisterRequest;
 import com.exclaimation.librarysystem.service.AuthService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,11 +21,15 @@ public class AuthController {
         this.authService = authService;
     }
 
+    @GetMapping("/register")
+    public String register(){
+        return "/register";
+    }
 
-    @PostMapping("/join")
-    public ResponseEntity<String> join(@RequestBody JoinRequest request){
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody MultiValueMap<String, String> request){
         try{
-            authService.join(request.getUserId(), request.getPassword());
+            authService.register(request.get("id").get(0), request.get("pw").get(0));
             return ResponseEntity.ok("join success");
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());

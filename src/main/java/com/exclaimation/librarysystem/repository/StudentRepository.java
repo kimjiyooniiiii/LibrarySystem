@@ -1,6 +1,6 @@
 package com.exclaimation.librarysystem.repository;
 
-import com.exclaimation.librarysystem.domain.Student;
+import com.exclaimation.librarysystem.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

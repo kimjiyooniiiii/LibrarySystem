@@ -1,5 +1,6 @@
 package com.exclaimation.librarysystem.entity;
 
+import com.exclaimation.librarysystem.domain.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -13,12 +14,13 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long studentId;
+    String studentId;
 
     @Column(nullable = false)
     String name;
@@ -35,8 +37,9 @@ public class Student {
 
     @Column(nullable = false)
     String phone;
-
-
     @Column
     boolean delay;
+
+    @Enumerated(EnumType.STRING)
+    Role userRole;
 }
