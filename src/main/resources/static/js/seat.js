@@ -1,13 +1,16 @@
 
+var urlParams = new URLSearchParams(window.location.search);
+
 var seat_id = 0; // 현재 좌석 선택안하고 확인시 에러 발생
-var student_id = '0';
+var student_id = urlParams.get('student_id');
 var enable = true;
 
 function setValue(value, state) {
     seat_id = value;
-    console.log(seat_id);
-
     enable = state;
+
+    console.log(seat_id);
+    console.log(student_id);
     if(enable) console.log("true")
 }
 
@@ -46,10 +49,11 @@ function returnSeat() {
     
 }
 
-$(document).ready(function () {
-    $(".enable_seat").click(function () {
+
+$(document).ready(function(){
+    $(".btn-group button").click(function(){
         // Remove the active class from all buttons
-        $(".enable_seat").removeClass("active");
+        $(".btn-group button").removeClass("active");
         // Add the active class to the clicked button
         $(this).addClass("active");
     });

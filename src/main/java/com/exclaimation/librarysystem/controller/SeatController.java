@@ -6,9 +6,7 @@ import com.exclaimation.librarysystem.service.SeatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -22,8 +20,13 @@ public class SeatController {
         this.seatService = seatService;
     }
 
-    @GetMapping(value = "/seat")
-    public String seat(Model model){
+    @RequestMapping(value = "/seat", method = RequestMethod.GET)
+    public String seat(String student_id, Model model){
+        System.out.println(student_id);
+        if(student_id == null)
+        {
+            System.out.println("로그인이 필요한 서비스입니다.");
+        }
         // 48
         ArrayList<Seat.Simple> seats = (ArrayList<Seat.Simple>) seatService.findSeats();
 
@@ -55,6 +58,9 @@ public class SeatController {
         }
 
         model.addAttribute("groups", groups);
+        model.addAttribute("student_id", student_id);
+
+
         return "seat/seat";
     }
 
@@ -66,16 +72,13 @@ public class SeatController {
         Seat.Simple form = new Seat.Simple();
         form.setSeat_id(seat_id);
         form.setStudent_id(student_id);
-
         boolean b_enable = true;
         if (enable == 0) b_enable = false;
         form.setEnable(b_enable);
 
-        System.out.println(form);
-
         seatService.updateSeat(form);
 
-        return "redirect:/seat";
+        return "redirect:/";
     }
 
 }
