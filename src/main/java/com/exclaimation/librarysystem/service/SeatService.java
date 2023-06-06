@@ -44,6 +44,7 @@ public class SeatService {
         seatEntity.setStudent_id(seatForm.getStudent_id());
         seatEntity.setEnable(seatForm.isEnable()^true);
 
+        System.out.println(seatEntity.isEnable());
         seatRepository.save(seatEntity);
     }
 }

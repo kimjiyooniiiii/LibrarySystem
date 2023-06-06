@@ -1,5 +1,7 @@
 package com.exclaimation.librarysystem.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 import lombok.Data;
 
 import java.time.LocalDateTime;

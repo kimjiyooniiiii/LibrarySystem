@@ -1,14 +1,14 @@
 
 var seat_id = 0; // 현재 좌석 선택안하고 확인시 에러 발생
-var user_id = 1;
-var is_used = true;
+var student_id = 1;
+var enable = true;
 
 function setValue(value, state) {
     seat_id = value;
     console.log(seat_id);
 
-    is_used = state;
-    if(is_used) console.log("true")
+    enable = state;
+    if(enable) console.log("true")
 }
 
 function submit() {
@@ -18,22 +18,25 @@ function submit() {
 
     var inputSeatId = document.createElement("input");
     inputSeatId.type = "number";
-    inputSeatId.name = "seatId";
+    inputSeatId.name = "seat_id";
     inputSeatId.value = seat_id;
     form.appendChild(inputSeatId);
     
-    var inputUserId = document.createElement("input");
-    inputUserId.type = "number";
-    inputUserId.name = "userId";
-    inputUserId.value = user_id;
-    form.appendChild(inputUserId);
+    var inputStudentId = document.createElement("input");
+    inputStudentId.type = "number";
+    inputStudentId.name = "student_id";
+    inputStudentId.value = student_id;
+    form.appendChild(inputStudentId);
 
-    var inputIsUsed = document.createElement("input");
-    inputIsUsed.type = "hidden";
-    inputIsUsed.name = "isUsed";
-    inputIsUsed.value = is_used;
-    form.appendChild(inputIsUsed);
-
+    var inputEnable = document.createElement("input");
+    inputEnable.type = "number";
+    inputEnable.name = "enable";
+    if(enable)
+        inputEnable.value = 1;
+    else
+        inputEnable.value = 0;
+    form.appendChild(inputEnable);
+    
     document.body.appendChild(form);
     form.submit();
     document.body.removeChild(form);                
@@ -41,9 +44,9 @@ function submit() {
 
 
 $(document).ready(function () {
-    $(".empty_seat").click(function () {
+    $(".enable_seat").click(function () {
         // Remove the active class from all buttons
-        $(".empty_seat").removeClass("active");
+        $(".enable_seat").removeClass("active");
         // Add the active class to the clicked button
         $(this).addClass("active");
     });
