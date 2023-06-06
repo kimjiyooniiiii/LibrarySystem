@@ -11,10 +11,17 @@
 <h4><span th:text="${keyword}"></span> 검색 결과</h4>
 
 <table>
+    <thead>
+    <td>ID</td>
+    <td>제목</td>
+    <td>내용</td>
+    <td>대출가능여부</td>
+    </thead>
     <tbody>
     <tr th:each="book : ${books}">
         <td th:text="${book.id}"></td>
-        <td th:class="left" th:text ="${book.name}"></td>
+        <td th:class="left" th:text ="${book.title}"></td>
+        <td th:class="left" th:text ="${book.content}"></td>
         <td th:class = "${book.available == '대출 가능'}? 'css1' : 'css2'" th:text="${book.available}"></td>
     </tr>
     </tbody>

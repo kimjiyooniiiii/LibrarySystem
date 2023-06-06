@@ -12,6 +12,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class SpringSecurityConfig {
+    private final String[] PERMIT = {"/images/**", "/auth/**", "/css/**", "/user/**", "/", "book/**"};
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -24,7 +25,7 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests(request ->
                         request
                                 .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                                .requestMatchers("/images/**", "/auth/**", "/css/**", "/user/**" ,"/").permitAll()
+                                .requestMatchers(PERMIT).permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/seat/**", "/user/**").hasRole("USER")
                                 .anyRequest().authenticated()

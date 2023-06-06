@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +7,20 @@
     <link rel="stylesheet" href="/css/index.css">
     <title>도서 페이지</title>
 </head>
-</html>
 
 <body>
 <div class="container">
     <a href="/"><img href="#" src="/images/곰두리지휘자.png"></a>
     <div class="loginBox">
         <h1>회원가입</h1>
-        <form method="post" action="/auth/register" >
+        <form method="post" action="/auth/register">
             <label for="loginId" id="labelId">아이디</label>
             <input type="text" name="id" id="loginId" placeholder="학번을 입력해주세요" autocomplete="off">
             <label for="loginPw" id="labelPw">비밀번호</label>
-            <input type="password" name="pw" id="loginPw" onchange="checkPwd" placeholder="비밀번호를 입력해주세요" autocomplete="off">
-            <label for="loginPw" id="labelRePw">비밀번호 확인</label>
-            <input type="password" name="pwcheck" id="PwCheck"  onchange="checkPwd" placeholder="비밀번호를 입력해주세요" autocomplete="off">
+            <input type="password" name="pw" id="loginPw" onchange="checkPwd()" placeholder="비밀번호를 입력해주세요" autocomplete="off">
+            <label for="PwCheck" id="labelRePw">비밀번호 확인</label>
+            <input type="password" name="pwcheck" id="PwCheck" onchange="checkPwd()" placeholder="비밀번호를 입력해주세요" autocomplete="off">
+            <label id=""
             <button id="btn-register" type="submit">회원가입</button>
             <a href="/">뒤로가기</a>
         </form>
@@ -28,17 +28,29 @@
 </div>
 
 <script>
-    function checkPwd(){
-        if(document.getElementById('loginPw').value !='' && document.getElementById('PwCheck').value!=''){
-            if(document.getElementById('loginPw').value==document.getElementById('PwCheck').value){
-                document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
-                document.getElementById('check').style.color='blue';
-            }
-            else{
-                document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
-                document.getElementById('check').style.color='red';
+    function checkPwd() {
+        if (document.getElementById('loginPw').value !== '' && document.getElementById('PwCheck').value !== '') {
+            if (document.getElementById('loginPw').value === document.getElementById('PwCheck').value) {
+                document.getElementById('check').innerHTML = '비밀번호가 일치합니다.';
+                document.getElementById('check').style.color = 'blue';
+                document.getElementById('btn-register').removeAttribute('disabled');
+            } else {
+                document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다.';
+                document.getElementById('check').style.color = 'red';
+                document.getElementById('btn-register').setAttribute('disabled', 'disabled');
             }
         }
     }
+
+    document.getElementById('btn-register').addEventListener('click', function (event) {
+        event.preventDefault();
+        if (document.getElementById('loginPw').value === document.getElementById('PwCheck').value) {
+            document.getElementById('btn-register').removeAttribute('disabled');
+            document.getElementById('btn-register').closest('form').submit();
+        } else {
+            alert('비밀번호가 일치하지 않습니다.');
+        }
+    });
 </script>
 </body>
+</html>
