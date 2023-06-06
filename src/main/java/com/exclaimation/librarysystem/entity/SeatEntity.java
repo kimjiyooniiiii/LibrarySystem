@@ -16,7 +16,7 @@ public class SeatEntity {
     private Long seat_id;
 
     @Column
-    private Long student_id;
+    private String student_id;
 
     @Column
     private boolean enable;

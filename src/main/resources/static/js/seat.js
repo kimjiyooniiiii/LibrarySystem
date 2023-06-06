@@ -1,6 +1,6 @@
 
 var seat_id = 0; // 현재 좌석 선택안하고 확인시 에러 발생
-var student_id = 1;
+var student_id = '0';
 var enable = true;
 
 function setValue(value, state) {
@@ -23,7 +23,7 @@ function submit() {
     form.appendChild(inputSeatId);
     
     var inputStudentId = document.createElement("input");
-    inputStudentId.type = "number";
+    inputStudentId.type = "hidden";
     inputStudentId.name = "student_id";
     inputStudentId.value = student_id;
     form.appendChild(inputStudentId);
@@ -42,6 +42,9 @@ function submit() {
     document.body.removeChild(form);                
 }
 
+function returnSeat() {
+    
+}
 
 $(document).ready(function () {
     $(".enable_seat").click(function () {

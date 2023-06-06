@@ -60,7 +60,7 @@ public class SeatController {
 
     @PostMapping("/seat")
     public String updateSeat(@RequestParam(value="seat_id") Long seat_id,
-        @RequestParam(value="student_id") Long student_id, 
+        @RequestParam(value="student_id") String student_id,
         @RequestParam(value="enable") Long enable){
 
         Seat.Simple form = new Seat.Simple();
