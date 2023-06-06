@@ -20,9 +20,10 @@ public class SeatService {
         List<Seat.Simple> list = new ArrayList<>();
         for(SeatEntity seatEntity : seatRepository.findAll()){
             Seat.Simple seat = new Seat.Simple();
-            seat.setSeatId(seatEntity.getSeatId());
-            seat.setUserId(seatEntity.getUserId());
-            seat.setUsed(seatEntity.isUsed());
+            seat.setSeat_id(seatEntity.getSeat_id());
+            seat.setStudent_id(seatEntity.getStudent_id());
+            seat.setEnable((seatEntity.isEnable()));
+
             list.add(seat);
         }
 
@@ -35,15 +36,15 @@ public class SeatService {
         );
     }
 
-    public Long updateSeat(Seat.Simple seatForm){
+    public void updateSeat(Seat.Simple seatForm){
 
-        SeatEntity seatEntity = seatRepository.findById(seatForm.getSeatId()).orElseThrow(
+        SeatEntity seatEntity = seatRepository.findById(seatForm.getSeat_id()).orElseThrow(
                 IllegalArgumentException::new
         );
-        seatEntity.setUserId(seatForm.getUserId());
-        seatEntity.setUsed(seatForm.isUsed()^true);
+        seatEntity.setStudent_id(seatForm.getStudent_id());
+        seatEntity.setEnable(seatForm.isEnable()^true);
 
+        System.out.println(seatEntity.isEnable());
         seatRepository.save(seatEntity);
-        return  seatEntity.getSeatId();
     }
 }

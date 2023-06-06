@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
+  <title>도서 페이지</title>
+</head>
+
+<style>
+#btn-logout {
+  width: 60px;
+  height: 28px;
+  font-size: 11px;
+  border: none;
+  border-radius: 5px;
+}
+</style>
+<body>
+<div class="container">
+  <a href="/"><img src="images/곰두리지휘자.png"></a>
+  <form action="" method="post">
+    <div id="searchTitle"><h3 id="searchT">도서 검색</h3></div>
+    <input type="text" name="title" placeholder="도서명, 도서 내용, 저자 등 검색어를 입력하세요." id="search">
+    <button type="submit" id="clickBtn">확인</button>
+  </form>
+
+  <div class="menu">
+    <a href="/" id="one">
+      <div><h3>나의 대출 현황</h3></div>
+    </a>
+    <a href="/seat" id="two">
+      <div><h3>실시간 열람실</h3></div>
+    </a>
+    <a href="/books/wishForm" id="three">
+      <div><h3>희망 도서 신청</h3></div>
+    </a>
+  </div>
+
+  <div class="loginBox">
+      <div><h3>사용자 학번</h3><p id="studentNum">202012345</p></div>
+      <a href="/logout"><button id="btn-logout">LOGOUT</button></a>
+    </div>
+  </div>
+</div>
+</body>

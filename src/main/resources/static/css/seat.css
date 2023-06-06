@@ -1,8 +1,10 @@
+div { text-align: center; }
 img {
     display: inline-block;
     width: 60px;
-    margin: 0 auto;
 } img:hover { width: 70px; }
+
+.container { margin-top: 2%; }
 
 #group_table {
     margin: 0 auto;
@@ -27,7 +29,7 @@ img {
     text-align: center;
 }
 
-.empty_seat {
+.enable_seat {
     background-color: #C0E2FB;
     color: #000;
     border: 0.5;
@@ -38,7 +40,7 @@ img {
     font-size: 24px;
 }
 
-.using_seat {
+.unable_seat {
     background-color: #fff;
     color: #000;
     border: 0.5;
