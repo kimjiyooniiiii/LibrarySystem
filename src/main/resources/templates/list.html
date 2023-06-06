@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+<!--    <link rel="stylesheet" type="text/css" href="/css/search.css">-->
+    <title>홈페이지</title>
+    <link th:href="@{/css/search.css}" rel="stylesheet">
+</head>
+<body>
+
+<table>
+    <thead>
+    <td>대출코드</td>
+    <td>도서코드</td>
+    <td>회원 ID</td>
+    <td>대출일</td>
+    <td>반납 예정일</td>
+    <td>반납상태</td>
+    <td>반납버튼</td>
+
+    </thead>
+    <tbody>
+    <tr th:each="rent : ${rents}">
+        <td th:text="${rent.id}"></td>
+        <td th:text="${rent.rentId}"></td>
+        <td th:text="${rent.studentId}"></td>
+        <td th:text="${rent.rentDate}"></td>
+        <td th:text="${rent.returnDate}"></td>
+        <td th:text="${rent.isReturn}"></td>
+        <td th:class = "${rent.rentDate == null}? 'css1' : 'css2'" th:text="${rent.rentDate==null}? '반납확인' : '반납완료'"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
