@@ -28,6 +28,9 @@ public class Book {
     @Column(nullable = false)
     String content;
 
+    @Column
+    String image;
+
     @Column(nullable = false)
     boolean isRent;
 

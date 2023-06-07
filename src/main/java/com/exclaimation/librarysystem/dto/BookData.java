@@ -11,6 +11,7 @@ public class BookData {
     public static class response{
         public Long id;
         public String title;
+        public String image;
         public String content;
         public String available;
     }

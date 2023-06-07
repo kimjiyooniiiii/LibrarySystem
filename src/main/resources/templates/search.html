@@ -3,28 +3,47 @@
 <head>
     <meta charset="UTF-8">
 
-<!--    <link rel="stylesheet" type="text/css" href="/css/search.css">-->
+    <!--    <link rel="stylesheet" type="text/css" href="/css/search.css">-->
     <title>홈페이지</title>
     <link th:href="@{/css/search.css}" rel="stylesheet">
 </head>
 <body>
-<h4><span th:text="${keyword}"></span> 검색 결과</h4>
+<div class="container">
 
-<table>
-    <thead>
-    <td>ID</td>
-    <td>제목</td>
-    <td>내용</td>
-    <td>대출가능여부</td>
-    </thead>
-    <tbody>
-    <tr th:each="book : ${books}">
-        <td th:text="${book.id}"></td>
-        <td th:class="left" th:text ="${book.title}"></td>
-        <td th:class="left" th:text ="${book.content}"></td>
-        <td th:class = "${book.available == '대출 가능'}? 'css1' : 'css2'" th:text="${book.available}"></td>
-    </tr>
-    </tbody>
-</table>
+    <a href="/"><img class="doori" src="/images/곰두리지휘자.png"></a>
+    <h4><span th:text="${keyword}"></span> 검색 결과</h4>
+
+    <table>
+        <thead>
+        <td>이미지</td>
+        <td>ID</td>
+        <td>제목</td>
+        <td>내용</td>
+        <td>대출가능여부</td>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td><img th:src="${book.image}"></td>
+            <td th:text="${book.id}"></td>
+            <td th:class="title" th:text="${book.title}"></td>
+            <td th:class="content" th:utext="${book.content}"></td>
+            <td th:class="${book.available == '대출 가능'}? 'css1' : 'css2'" th:text="${book.available}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <div class="page">
+        <th:block th:each="page:${#numbers.sequence(startPage,endPage)}">
+            <!--    <a th:if="${page != nowPage}" th:href="@{/book/search(keyword=${keyword},page=${page-1})}" th:text ="${page}"></a>-->
+            <form class="number" th:if="${page != nowPage}"
+                  th:action="@{/book/search(keyword=${keyword},page=${page-1})}" method="post">
+                <button type="submit" th:text="${page}"></button>
+            </form>
+            <label class="number" th:if="${page==nowPage}" th:text="${page}" style="color:#2cafff"></label>
+
+        </th:block>
+    </div>
+</div>
+
 </body>
 </html>

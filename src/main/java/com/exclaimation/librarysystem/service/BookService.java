@@ -3,6 +3,7 @@ package com.exclaimation.librarysystem.service;
 import com.exclaimation.librarysystem.dto.BookData;
 import com.exclaimation.librarysystem.entity.Book;
 import com.exclaimation.librarysystem.repository.BookRepository;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,19 +18,27 @@ public class BookService {
         this.bookRepository = repository;
     }
 
-    public List<BookData.response> search(String keyword, Integer page) {
-        String title = keyword ;
-        String content = keyword ;
-        List<Book> books = bookRepository.findPageByTitleContainsOrContentContains(title ,content,page);
+    public List<BookData.response> search(String keyword, Pageable page, int max) {
+        String title = keyword;
+        String content = keyword;
+
+        List<Book> books = bookRepository.findKeyword(title, content, page);
         List<BookData.response> responses = new ArrayList<>();
-        for(Book book :books){
+        for (Book book : books) {
             responses.add(BookData.response.builder()
                     .id(book.getBookId())
+                    .image(book.getImage())
                     .title(book.getTitle())
                     .content(book.getContent())
-                    .available(book.isRent()?"대출 가능" : "대출 불가능")
+                    .available(book.isRent() ? "대출 불가능" : "대출 가능")
                     .build());
         }
         return responses;
+    }
+
+    public int getMaxNumber(String keyword, Pageable page){
+        String title = keyword;
+        String content = keyword;
+        return bookRepository.getTotal(title, content, page);
     }
 }
