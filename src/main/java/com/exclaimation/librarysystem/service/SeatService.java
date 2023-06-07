@@ -41,9 +41,35 @@ public class SeatService {
         SeatEntity seatEntity = seatRepository.findById(seatForm.getSeat_id()).orElseThrow(
                 IllegalArgumentException::new
         );
-        seatEntity.setStudent_id(seatForm.getStudent_id());
-        seatEntity.setEnable(seatForm.isEnable()^true);
 
+
+        boolean enable = seatForm.isEnable();
+        if(enable) { // 좌석 예약
+            List<Seat.Simple> list = findSeats();
+            boolean isMySeat = false;
+            for(int i = 0; i < 48; i++)
+            {
+                if( list.get(i).getStudent_id().equals(seatForm.getStudent_id()) )
+                    isMySeat = true;
+            }
+
+            if(isMySeat && !seatForm.getStudent_id().equals("0"))
+            {
+                System.out.println("한 사람이 두 자리 이상을 예약할 수 없습니다.");
+                return;
+            }
+
+            seatEntity.setStudent_id(seatForm.getStudent_id());
+        }
+        else{ // 좌석 반납
+            if(!seatEntity.getStudent_id().equals(seatForm.getStudent_id()) && !seatForm.getStudent_id().equals("0")){
+                System.out.println("다른 사용자의 사용중인 좌석은 반납할 수 없습니다.");
+                return;
+            }
+
+            seatEntity.setStudent_id("0");
+        }
+        seatEntity.setEnable(seatForm.isEnable()^true);
         seatRepository.save(seatEntity);
     }
 }

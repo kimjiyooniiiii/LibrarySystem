@@ -29,7 +29,7 @@ img {
     text-align: center;
 }
 
-.empty_seat {
+.enable_seat {
     background-color: #C0E2FB;
     color: #000;
     border: 0.5;
@@ -40,8 +40,19 @@ img {
     font-size: 24px;
 }
 
-.using_seat {
+.unable_seat {
     background-color: #fff;
+    color: #000;
+    border: 0.5;
+    border-radius: 20px;
+    padding: 6px 20px;
+    height: 40px;
+    width: 80px;
+    font-size: 24px;
+}
+
+.my_seat {
+    background-color: #ff0000;
     color: #000;
     border: 0.5;
     border-radius: 20px;
@@ -62,4 +73,5 @@ img {
 .active, .btn-group button:hover {
     background-color: #3e8e41;
     border: 1px solid #3e8e41;
+    border-radius: 20px;
 }

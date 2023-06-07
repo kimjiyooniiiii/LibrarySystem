@@ -1,0 +1,121 @@
+
+.container {
+    margin-top: 2%;
+    text-align: center;
+}
+
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto; /* 테이블을 수평 가운데로 정렬 */
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    padding: 15px;
+    font-family: sans-serif;
+}
+
+td.title {
+    width: 15%;
+    text-align: left;
+}
+
+td.content {
+    width: 50%;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+thead {
+    font-weight: bold;
+}
+
+h4 {
+    width: 80%;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 2em;
+    text-transform: uppercase;
+    background: #9fd0ff;
+    margin: 0 auto; /* h2를 수평 가운데로 정렬 */
+}
+
+strong {
+    font-weight: 700;
+    background-color: yellow;
+}
+
+p {
+    font-family: sans-serif;
+}
+
+.none {
+    border-top: none;
+    border-bottom: none;
+}
+
+.css1 {
+    width: 90px;
+    background: #9FD0FFFF;
+}
+
+.css2 {
+    width: 90px;
+    background: #f64568;
+}
+
+.doori {
+    display: inline-block;
+    width: 60px;
+}
+
+.doori:hover {
+    width: 70px;
+}
+
+img {
+    width: 40%;
+}
+
+img:hover {
+    width: 50%;
+}
+
+.page {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    border: none;
+    margin: 5px;
+    padding: 5px;
+    background: white;
+    font-size: 1.8rem;
+}
+
+.number button {
+    background: white;
+    font-size: 1.7rem;
+    border: none;
+}
+
+.number button:hover{
+    color : #f64568;
+}

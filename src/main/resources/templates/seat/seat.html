@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/seat.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/seat.js"></script>
+
 </head>
 
 <body>
@@ -23,11 +24,15 @@
                         <table class="seat_table">
                             <tr th:each="seat_row : ${group}">
                                 <td th:each="seat : ${seat_row}" class="btn-group">
-                                    <button th:unless="${seat.enable}" class="empty_seat"
+                                    <button th:if="${seat.student_id} == ${student_id}" class="my_seat"
                                             th:onclick="javascript:setValue([[${seat.seat_id}]],[[${seat.enable}]])">
                                         [[${seat.seat_id}]]
                                     </button>
-                                    <button th:if="${seat.enable}" class="using_seat"
+                                    <button th:if="${seat.student_id} != ${student_id} and !${seat.enable}" class="unable_seat"
+                                            th:onclick="javascript:setValue([[${seat.seat_id}]],[[${seat.enable}]])">
+                                        [[${seat.seat_id}]]
+                                    </button>
+                                    <button th:if="${seat.student_id} != ${student_id} and ${seat.enable}" class="enable_seat"
                                             th:onclick="javascript:setValue([[${seat.seat_id}]],[[${seat.enable}]])">
                                         [[${seat.seat_id}]]
                                     </button>
@@ -39,14 +44,12 @@
             </tbody>
 
             <tfoot>
-
                 <tr>
                     <td>
                         <i style="background-color: #C0E2FB">&nbsp;&nbsp;&nbsp;</i>:예약가능
                         <i style="background-color: #FFF; border: 1px solid black;">&nbsp;&nbsp;&nbsp;</i>:예약 불가능
                     </td>
                     <td class="btn-group">
-                        <button type="button" class="my_button">취소</button>
                         <button type="button" class="my_button" th:onclick="javascript:submit()">확인</button>
                     </td>
                 </tr>
