@@ -1,6 +1,5 @@
 package com.exclaimation.librarysystem;
 
-import com.exclaimation.librarysystem.repository.JpaSeatRepository;
 import com.exclaimation.librarysystem.repository.MemberRepository;
 import com.exclaimation.librarysystem.repository.SeatRepository;
 import com.exclaimation.librarysystem.service.MemberService;
@@ -16,27 +15,20 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class SpringConfig {
 
     private EntityManager em;
-
+    private final SeatRepository seatRepository;
     @Autowired
-    public SpringConfig(EntityManager em, MemberRepository memberRepository){
+    public SpringConfig(EntityManager em, SeatRepository seatRepository, MemberRepository memberRepository){
         this.em = em;
+        this.seatRepository = seatRepository;
         this.memberRepository = memberRepository;
     }
 
     @Bean
     public SeatService seatService(){
-        return new SeatService(seatRepository());
-    }
-
-    private SeatRepository seatRepository() {
-        return new JpaSeatRepository(em);
+        return new SeatService(seatRepository);
     }
 
     private final MemberRepository memberRepository;
-
-    public SpringConfig(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
 
     @Bean
     public MemberService memberService() {
