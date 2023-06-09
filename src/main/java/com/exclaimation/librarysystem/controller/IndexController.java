@@ -1,6 +1,5 @@
 package com.exclaimation.librarysystem.controller;
 
-import com.exclaimation.librarysystem.dto.RegisterRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;

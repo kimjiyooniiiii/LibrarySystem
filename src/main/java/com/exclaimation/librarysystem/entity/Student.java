@@ -28,9 +28,6 @@ public class Student {
     @Column(nullable = false)
     String password;
 
-    @Column(nullable = false)
-    String major;
-
     @CreationTimestamp
     @Column(nullable = false)
     LocalDate created_dt;
