@@ -1,7 +1,9 @@
 package com.exclaimation.librarysystem.controller;
 
 import com.exclaimation.librarysystem.dto.BookData;
+import com.exclaimation.librarysystem.entity.Book;
 import com.exclaimation.librarysystem.service.BookService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -26,41 +28,16 @@ public class BookController {
         return "wishForm";
     }
 
-        @PostMapping("/search")
+
+    @GetMapping("/search")
     public String search(Model model ,
                          @RequestParam("keyword") String keyword,
-                         @PageableDefault(page=0, size=10, sort="id", direction= Sort.Direction.DESC) Pageable pageable){
-        int max = bookService.getMaxNumber(keyword, pageable);
-        List<BookData.response> list = bookService.search(keyword,pageable, max);
+                         @RequestParam(value = "page", defaultValue="0") int page){
 
-        model.addAttribute("books", list);
+        model.addAttribute("books", bookService.search(keyword,page));
         model.addAttribute("keyword", keyword);
-
-        int nowPage = pageable.getPageNumber() +1;
-        int startPage = Math.max(nowPage -4, 1);
-        int endPage =Math.min(nowPage+9, list.size());
-        model.addAttribute("nowPage", nowPage);
-        model.addAttribute("startPage", startPage);
-        model.addAttribute("endPage", endPage);
-
+        model.addAttribute("maxPage", 5);
         return "search";
     }
-//    @PostMapping("/search")
-//    public String search(Model model,
-//                         @RequestParam("keyword") String keyword,
-//                         @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-//
-//
-//        return "search";
-//    }
-//    @PostMapping("/search")
-//    public String search(Model model ,
-//                         @RequestParam("keyword") String keyword,
-//                         @RequestParam(value = "pageNumber", defaultValue="0") Integer page){
-//
-//        model.addAttribute("books", bookService.search(keyword,page));
-//        model.addAttribute("keyword", keyword);
-//        return "search";
-//    }
 
 }

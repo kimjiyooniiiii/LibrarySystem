@@ -98,24 +98,33 @@ img:hover {
     margin: 0 auto;
 }
 
-.number {
+ul {
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 1;
     border: none;
-    margin: 5px;
-    padding: 5px;
+    margin: 10px;
+    padding: 10px;
     background: white;
     font-size: 1.8rem;
 }
 
-.number button {
+li{
+    list-style-type: none;
+    margin : 20px;
+
+}
+
+li a{
+
     background: white;
     font-size: 1.7rem;
     border: none;
+    color : black;
+    text-decoration-line : none;
 }
 
-.number button:hover{
+li a:hover{
     color : #f64568;
 }

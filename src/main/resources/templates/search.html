@@ -22,26 +22,40 @@
         <td>대출가능여부</td>
         </thead>
         <tbody>
-        <tr th:each="book : ${books}">
+        <tr th:each="book : ${books.content}">
             <td><img th:src="${book.image}"></td>
-            <td th:text="${book.id}"></td>
+            <td th:text="${book.bookId}"></td>
             <td th:class="title" th:text="${book.title}"></td>
             <td th:class="content" th:utext="${book.content}"></td>
-            <td th:class="${book.available == '대출 가능'}? 'css1' : 'css2'" th:text="${book.available}"></td>
+            <td th:if="${book.isRent== false}" th:class="css1">대출 가능</td>
+            <td th:if="${book.isRent == true}" th:class="css2">대출 불가능</td>
         </tr>
 
         </tbody>
     </table>
-    <div class="page">
-        <th:block th:each="page:${#numbers.sequence(startPage,endPage)}">
-            <!--    <a th:if="${page != nowPage}" th:href="@{/book/search(keyword=${keyword},page=${page-1})}" th:text ="${page}"></a>-->
-            <form class="number" th:if="${page != nowPage}"
-                  th:action="@{/book/search(keyword=${keyword},page=${page-1})}" method="post">
-                <button type="submit" th:text="${page}"></button>
-            </form>
-            <label class="number" th:if="${page==nowPage}" th:text="${page}" style="color:#2cafff"></label>
+    <div class="page"
+         th:with="start = ${(books.number/maxPage)*maxPage+1}, end=(${(books.totalPages == 0) ? 1 : (start + (maxPage - 1) < books.totalPages ? start + (maxPage - 1) : books.totalPages)})">
+        <ul>
+            <li th:if="${start > 1}">
+                <a th:href="@{/book/search(page=0, keyword=${keyword})}" th:text="'<<'"></a></li>
+            </li>
 
-        </th:block>
+            <li th:if="${start > 1}">
+                <a th:href="@{/book/search(page=${start} - ${maxPage}, keyword=${keyword})}" th:text="'<'"></a>
+            </li>
+
+            <li th:each="page: ${#numbers.sequence(start, end)}">
+                <a th:href="@{/book/search(page=${page}-1,  keyword=${keyword})}" th:text="${page}"></a></li>
+            </li>
+
+            <li th:if="${end < books.totalPages}">
+                <a th:href="@{/book/search(page=${start} + ${maxPage}, keyword=${keyword})}" th:text="'>'"></a>
+            </li>
+
+            <li th:if="${end < books.totalPages}">
+                <a th:href="@{/book/search(page=${books.totalPages}-1, keyword=${keyword})}" th:text="'>>'"></a></li>
+            </li>
+        </ul>
     </div>
 </div>
 
