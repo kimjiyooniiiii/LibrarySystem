@@ -7,6 +7,9 @@ img {
 
 .container { margin-top: 2%; }
 
+h1{
+    margin: 2%;
+}
 #searchTitle {
     display: inline-block;
     background-color: rgba(161, 205, 236, 1);
@@ -62,7 +65,7 @@ img {
 
 .loginBox {
     width: 430px;
-    height: 300px;
+    height: 600px;
     background-color: rgba(157, 204, 236, 0.64);
     font-size: 15px;
     border-radius: 5px;
@@ -70,16 +73,36 @@ img {
 }
 
 #labelId {
-   font-size: 14px;
-   margin-right: 295px;
+    font-size: 14px;
+    margin-right: 295px;
 }
 #labelPw {
     font-size: 14px;
     margin-right: 285px;
 }
+#labelName{
+    font-size: 14px;
+    margin-right: 295px;
+}
 #labelRePw {
     font-size: 14px;
     margin-right: 260px;
+}
+#phone{
+    font-size: 14px;
+    margin-right: 295px;
+}
+
+#userName {
+    display: block;
+    width: 77.8%;
+    height: 35px;
+    border: 1px solid rgba(114, 143, 157, 0.93);
+    border-radius: 5px;
+    padding-left: 15px;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
 #loginId {
     display: block;
@@ -113,15 +136,35 @@ img {
     margin: 0 auto;
     margin-top: 5px;
 }
-#btn-login {
-    width: 82%;
+#phoneNumber {
+    display: block;
+    width: 77.8%;
+    height: 35px;
+    border: 1px solid rgba(114, 143, 157, 0.93);
+    border-radius: 5px;
+    padding-left: 15px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+#btn-register {
+    width: 40%;
     height: 35px;
     border: none;
     border-radius: 5px;
     margin-top: 10px;
-}#btn-login:active {
-    background-color: rgba(17, 48, 69, 0.25);
-}
+}#btn-register:active {
+     background-color: rgba(17, 48, 69, 0.25);
+ }
+
+#btn-back {
+    width: 40%;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}#btn-back:active {
+     background-color: rgba(17, 48, 69, 0.25);
+ }
 
 @media screen and (max-width:500px) {
     /* 모바일 CSS*/

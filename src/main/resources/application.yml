@@ -14,8 +14,15 @@ spring:
         globally_quoted_identifiers: true
     hibernate:
       ddl-auto: none #create update none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
 
 
     show-sql: true
   main:
     allow-circular-references: true
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: DEBUG

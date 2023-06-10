@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bookDetail.css">
+    <title>BookDetail</title>
+</head>
+<body>
+<div class="container">
+    <a href="/"><img class="doori" src="/images/곰두리지휘자.png"></a>
+    <table>
+        <tr>
+            <td class="image" rowspan="4"><img class="book" th:src="${book.image}"></td>
+            <td class="title">제목</td>
+        </tr>
+        <tr>
+            <td class="content" th:text="${book.title}"></td>
+        </tr>
+        <tr>
+            <td class="title">저자</td>
+
+        </tr>
+        <tr>
+            <td class ="content" th:text="${book.author}"></td>
+
+        </tr>
+        <tr>
+            <td class="contentTitle" th:colspan="2">내용</td>
+        </tr>
+        <tr>
+            <td class ="contentDetail" th:colspan="2" th:utext="${book.content}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
