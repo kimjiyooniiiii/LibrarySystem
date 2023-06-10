@@ -12,6 +12,16 @@ table {
     margin: 0 auto; /* 테이블을 수평 가운데로 정렬 */
 }
 
+.content{
+    text-decoration-line: none;
+    color : black;
+}
+.content iframe{
+    display: none;
+}
+.content:hover{
+    color : #f64568;
+}
 td, th {
     border: 1px solid #dddddd;
     border-left: none;
@@ -22,7 +32,7 @@ td, th {
 }
 
 td.title {
-    width: 15%;
+    width: 200px;
     text-align: left;
 }
 
@@ -83,11 +93,11 @@ p {
 }
 
 img {
-    width: 40%;
+    width: 150px;
 }
 
 img:hover {
-    width: 50%;
+    width: 160px;
 }
 
 .page {

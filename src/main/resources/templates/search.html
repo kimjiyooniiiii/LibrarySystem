@@ -16,17 +16,17 @@
     <table>
         <thead>
         <td>이미지</td>
-        <td>ID</td>
+<!--        <td>ID</td>-->
         <td>제목</td>
         <td>내용</td>
         <td>대출가능여부</td>
         </thead>
         <tbody>
         <tr th:each="book : ${books.content}">
-            <td><img th:src="${book.image}"></td>
-            <td th:text="${book.bookId}"></td>
-            <td th:class="title" th:text="${book.title}"></td>
-            <td th:class="content" th:utext="${book.content}"></td>
+            <td><a th:href="@{/book/content(bookId = ${book.bookId})}"><img th:src="${book.image}"></a> </td>
+<!--            <td><a th:class="content" th:href="@{/book/content(bookId = ${book.bookId})}" th:text="${book.bookId}"></a></td>-->
+            <td th:class="title"> <a th:class="content" th:href="@{/book/content(bookId = ${book.bookId})}" th:text="${book.title}"></a></td>
+            <td th:class="content"><a th:class="content"  th:href="@{/book/content(bookId = ${book.bookId})}" th:utext="${book.content}"></a></td>
             <td th:if="${book.isRent== false}" th:class="css1">대출 가능</td>
             <td th:if="${book.isRent == true}" th:class="css2">대출 불가능</td>
         </tr>
