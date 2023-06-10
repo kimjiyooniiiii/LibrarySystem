@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,17 +26,18 @@ public class BookController {
     }
 
     @GetMapping("/search")
-    public String search(Model model ,
+    public String search(Model model,
                          @RequestParam("keyword") String keyword,
-                         @RequestParam(value = "page", defaultValue="0") int page){
+                         @RequestParam(value = "page", defaultValue = "0") int page) {
 
-        model.addAttribute("books", bookService.search(keyword,page));
+        model.addAttribute("books", bookService.search(keyword, page));
         model.addAttribute("keyword", keyword);
         model.addAttribute("maxPage", 5);
         return "search";
     }
+
     @GetMapping("/content")
-    public String getBookDetail(Model model, @RequestParam("bookId") long bookId){
+    public String getBookDetail(Model model, @RequestParam("bookId") long bookId) {
         model.addAttribute("book", bookService.findBookDetail(bookId));
         return "bookDetail";
     }

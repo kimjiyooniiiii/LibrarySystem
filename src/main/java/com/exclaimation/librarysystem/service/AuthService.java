@@ -46,7 +46,7 @@ public class AuthService {
             return repository.save(student);
         } else {
             response.setContentType("text/html; charset= UTF-8");
-            response.setCharacterEncoding("UTF8");
+            response.setCharacterEncoding("UTF-8");
 
             PrintWriter out = response.getWriter();
             out.println("<script>alert('중복된 계정입니다'); window.location.href = '/auth/register'</script> ");

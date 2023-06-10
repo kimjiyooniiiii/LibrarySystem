@@ -32,9 +32,9 @@
         <tr>
             <td class ="contentDetail" th:colspan="2" th:utext="${book.content}"></td>
         </tr>
-        <tr>
+        <tr sec:authorize="isAuthenticated">
             <td>
-                <button type="button" th:onclick="javascript:reserve([[${book.id}]], 201513384)"> 예약</button>
+                <button type="button" th:onclick="javascript:reserve([[${book.id}]], [[${userId}]])"> 예약</button>
             </td>
         </tr>
     </table>

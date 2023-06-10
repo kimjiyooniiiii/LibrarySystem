@@ -5,7 +5,10 @@ import com.exclaimation.librarysystem.entity.ReserveEntity;
 import com.exclaimation.librarysystem.entity.SeatEntity;
 import com.exclaimation.librarysystem.repository.ReserveRepository;
 import com.exclaimation.librarysystem.repository.SeatRepository;
+import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -17,20 +20,28 @@ public class ReserveService {
         this.reserveRepository = reserveRepository;
     }
 
-    public void makeReservation(Long book_id, String student_id){
+    public void makeReservation(Long bookId, String studentId , PrintWriter out)  {
 
-        List<ReserveEntity> list = reserveRepository.findByBookId(book_id);
-        if( list.size() >= 3){
-            System.out.println("예약자가 이미 3명이 존재하여 더이상 예약을 할 수 없습니다.");
+        if( reserveRepository.countBookId(bookId) >= 3){
+            out.println("<script>alert('예약자가 이미 3명이 존재하여 더이상 예약을 할 수 없습니다.'); window.location.href = '/book/content?bookId="+bookId+"'</script> ");
+            out.flush();
+            System.out.println("");
+            return;
+        }
+        if(reserveRepository.existsByBookIdAndStudentId(bookId , studentId)){
+            out.println("<script>alert('이미 예약한 도서입니다.'); window.location.href = '/book/content?bookId="+bookId+"'</script> ");
+            out.flush();
             return;
         }
 
         ReserveEntity reserveEntity = new ReserveEntity();
-        reserveEntity.setBook_id(book_id);
-        reserveEntity.setStudent_id(student_id);
+        reserveEntity.setBook_id(bookId);
+        reserveEntity.setStudent_id(studentId);
         reserveEntity.setReservation_date(LocalDate.now());
         reserveRepository.save(reserveEntity);
         System.out.println("정상적으로 도서를 예약했습니다");
+        out.println("<script>alert('정상적으로 도서를 예약했습니다'); window.location.href = '/book/content?bookId="+bookId+"'</script> ");
+        out.flush();
     }
 
     // delete

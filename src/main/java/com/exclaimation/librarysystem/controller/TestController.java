@@ -4,11 +4,17 @@ import com.exclaimation.librarysystem.domain.Seat;
 import com.exclaimation.librarysystem.entity.ReserveEntity;
 import com.exclaimation.librarysystem.service.RentService;
 import com.exclaimation.librarysystem.service.ReserveService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 
 @Controller
 public class TestController {
@@ -60,18 +66,27 @@ public class TestController {
     }
 
     @PostMapping("/reservation")
-    public String reservation(
-            @RequestParam(value = "book_id") Long book_id,
-            @RequestParam(value = "student_id") String student_id) {
+    public void reservation(
+            HttpServletResponse response,
+            @AuthenticationPrincipal UserDetails userDetails,
+            @RequestParam(value = "book_id") Long book_id) throws IOException {
 
-        reserveService.makeReservation(book_id, student_id);
 
-        return "redirect:/";
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+
+        if(userDetails != null){
+            reserveService.makeReservation(book_id, userDetails.getUsername(), out);
+        }
+        else{
+            out.println("<script>alert('로그인 후 이용바랍니다.'); window.location.href = '/';</script>");
+            out.flush();
+        }
+
+
     }
 
-    @GetMapping("/wishForm")
-    public String wishBook() {
-        return "wishForm";
-    }
+
 
 }
