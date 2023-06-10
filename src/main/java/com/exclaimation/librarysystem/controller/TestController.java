@@ -26,11 +26,12 @@ public class TestController {
         this.rentService = rentService;
     }
 
-    @GetMapping("/rent")
-    public String rent() throws IllegalAccessException {
+    @PostMapping("/rent")
+    public String rent(
+            @RequestParam(value = "book_id") Long book_id)  throws IllegalAccessException{
 
         // 예약자 중 가장 빠른 사람에게 대출
-        Long r_id = reserveService.fastReservationIdByBookId(1l);
+        Long r_id = reserveService.fastReservationIdByBookId(book_id);
         if (r_id == 0) {
             System.out.println("예약자가 없습니다");
         } else {
@@ -49,14 +50,16 @@ public class TestController {
             }
         }
 
-        return "rent";
+        return "redirect:/";
     }
 
-    @GetMapping("/return")
-    public String returnBook() {
-        int result = rentService.returnBook(1l);
+    @PostMapping("/return")
+    public String returnBook(
+                @RequestParam(value = "book_id") Long book_id) {
 
-        return "rent";
+        int result = rentService.returnBook(book_id);
+
+        return "redirect:/";
     }
 
     @PostMapping("/reservation")

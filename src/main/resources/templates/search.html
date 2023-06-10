@@ -32,7 +32,14 @@
             <td th:class="content"><a th:class="content"  th:href="@{/book/content(bookId = ${book.bookId})}" th:utext="${book.content}"></a></td>
             <td th:if="${book.isRent== false}" th:class="css1">대출 가능</td>
             <td th:if="${book.isRent == true}" th:class="css2">대출 불가능</td>
-            <td>
+
+
+            <td th:if="${userRole} == ADMIN " >
+                <button type="button" th:onclick="javascript:rent([[${book.bookId}]], 201513384)"> 대출 </button>
+                <button type="button" th:onclick="javascript:bookReturn([[${book.bookId}]])"> 반납 </button>
+            </td>
+
+            <td th:if="${userRole} == USER ">
                 <button type="button" th:onclick="javascript:reserve([[${book.bookId}]], 201513384)"> 예약</button>
             </td>
         </tr>

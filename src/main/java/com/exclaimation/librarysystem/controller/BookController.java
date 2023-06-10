@@ -31,11 +31,13 @@ public class BookController {
         model.addAttribute("books", bookService.search(keyword,page));
         model.addAttribute("keyword", keyword);
         model.addAttribute("maxPage", 5);
+        model.addAttribute("userRole", "ADMIN");
         return "search";
     }
     @GetMapping("/content")
     public String getBookDetail(Model model, @RequestParam("bookId") long bookId){
         model.addAttribute("book", bookService.findBookDetail(bookId));
+        model.addAttribute("userRole", "ADMIN");
         return "bookDetail";
     }
 
