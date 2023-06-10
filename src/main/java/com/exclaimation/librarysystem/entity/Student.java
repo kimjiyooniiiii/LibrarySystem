@@ -19,7 +19,6 @@ import java.util.List;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String studentId;
 
     @Column(nullable = false)
