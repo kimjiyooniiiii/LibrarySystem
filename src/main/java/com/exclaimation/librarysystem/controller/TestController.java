@@ -74,8 +74,4 @@ public class TestController {
         return "wishForm";
     }
 
-    @GetMapping("/wishForm")
-    public String wishBook() {
-        return "wishForm";
-    }
 }
