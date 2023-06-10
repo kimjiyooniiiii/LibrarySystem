@@ -39,5 +39,10 @@ public class BookController {
         model.addAttribute("maxPage", 5);
         return "search";
     }
+    @GetMapping("/content")
+    public String getBookDetail(Model model, @RequestParam("bookId") long bookId){
+        model.addAttribute("book", bookService.findBookDetail(bookId));
+        return "bookDetail";
+    }
 
 }

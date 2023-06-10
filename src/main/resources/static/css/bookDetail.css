@@ -1,0 +1,54 @@
+.container{
+    margin-top : 5%;
+    text-align: center;
+}
+
+.book{
+    width : 280px;
+    height: 320px;
+    border : 1px solid #444444;
+}
+
+table{
+    width: 45%;
+    margin-top: 2%;
+    margin-left:auto;
+    margin-right:auto;
+    /*border: 1px solid #444444;*/
+}
+
+.title{
+    width: 280px;
+    font-weight: bold;
+    font-size: 2rem;
+    border-bottom: 1px solid #c9c9c9;
+}
+
+.contentTitle{
+    font-weight: bold;
+    font-size: 2rem;
+    height: 20px;
+    border-top: 1px solid #c9c9c9;
+    border-bottom: 1px solid #c9c9c9;
+}
+.image{
+    width : 281px;
+}
+
+.doori {
+    display: inline-block;
+    width: 60px;
+}
+
+.doori:hover {
+    width: 70px;
+}
+.content{
+    font-size : 1.5rem;
+}
+.contentDetail{
+    font-size : 1.2rem;
+}
+.contentDetail iframe{
+    width: 80%;
+}

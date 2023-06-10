@@ -1,18 +1,17 @@
 package com.exclaimation.librarysystem.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 public class BookData {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
+    @Getter
     public static class response{
-        public Long id;
-        public String title;
-        public String image;
-        public String content;
-        public String available;
+        private Long id;
+        private String title;
+        private String image;
+        private String content;
+        private String author;
     }
 }

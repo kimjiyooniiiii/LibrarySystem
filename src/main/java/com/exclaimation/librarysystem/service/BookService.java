@@ -8,8 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -20,23 +19,6 @@ public class BookService {
         this.bookRepository = repository;
     }
 
-//    public List<BookData.response> search(String keyword, Pageable page, int max) {
-//        String title = keyword;
-//        String content = keyword;
-//
-//        List<Book> books = bookRepository.findKeyword(title, content, page);
-//        List<BookData.response> responses = new ArrayList<>();
-//        for (Book book : books) {
-//            responses.add(BookData.response.builder()
-//                    .id(book.getBookId())
-//                    .image(book.getImage())
-//                    .title(book.getTitle())
-//                    .content(book.getContent())
-//                    .available(book.isRent() ? "대출 불가능" : "대출 가능")
-//                    .build());
-//        }
-//        return responses;
-//    }
 
     public Page<Book> search(String keyword, int page) {
         String title = keyword;
@@ -46,4 +28,15 @@ public class BookService {
         return books;
     }
 
+    public BookData.response findBookDetail(long bookId) {
+        Book book = bookRepository.findById(bookId).orElseThrow(NullPointerException::new);
+        return BookData.response.builder()
+                .id(book.getBookId())
+                .title(book.getTitle())
+                .content(book.getContent())
+                .image(book.getImage())
+                .author(book.getAuthor())
+                .build();
+
+    }
 }
