@@ -23,12 +23,6 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/wishForm")
-    public String wishBook() {
-        return "wishForm";
-    }
-
-
     @GetMapping("/search")
     public String search(Model model ,
                          @RequestParam("keyword") String keyword,
