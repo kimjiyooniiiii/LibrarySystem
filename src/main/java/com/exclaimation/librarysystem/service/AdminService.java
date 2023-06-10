@@ -1,6 +1,6 @@
 package com.exclaimation.librarysystem.service;
 
-import com.exclaimation.librarysystem.entity.Rent;
+import com.exclaimation.librarysystem.entity.RentEntity;
 import com.exclaimation.librarysystem.entity.Require;
 import com.exclaimation.librarysystem.repository.RentRepository;
 import com.exclaimation.librarysystem.repository.RequireRepository;
@@ -24,8 +24,8 @@ public class AdminService {
     }
 
     // 회원들 대출 목록 보기
-    public List<Rent> showRentList() {
-        List<Rent> rentList = rentRepository.findAll();
+    public List<RentEntity> showRentList() {
+        List<RentEntity> rentList = rentRepository.findAll();
 
         return rentList;
     }

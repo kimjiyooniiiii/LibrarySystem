@@ -1,6 +1,6 @@
 package com.exclaimation.librarysystem.controller;
 
-import com.exclaimation.librarysystem.entity.Rent;
+import com.exclaimation.librarysystem.entity.RentEntity;
 import com.exclaimation.librarysystem.entity.Require;
 import com.exclaimation.librarysystem.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class adminController {
     // 회원들 대출 목록 보기
     @GetMapping("/rentList")
     public String rentList(Model model) {
-        List<Rent> rentList =  adminService.showRentList();
+        List<RentEntity> rentList =  adminService.showRentList();
         model.addAttribute("rentList", rentList);
 
         return "admin/rentList";
