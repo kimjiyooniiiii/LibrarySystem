@@ -9,13 +9,60 @@
 </head>
 
 <style>
+h6 {
+  font-size: 14px;
+}
+
+p {
+  color: gray;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+#userNum, #studentNum { margin-right: 200px; }
+
+.infoBox {
+  display: inline-block;
+  width: 100%;
+  margin-top: -35px;
+}
+
+.bookBox {
+  display: inline-block;
+  background-color: white;
+  width: 40%;
+  height: 100px;
+  border-radius: 3px;
+  vertical-align: bottom;
+  margin-right: 20px;
+}
+#rentCount {
+  display: inline-block;
+  text-align: center;
+  margin-right: 15px;
+}
+#overdue {
+  display: inline-block;
+  text-align: center;
+}
+
+.seatBox {
+  display: inline-block;
+  background-color: white;
+  width: 40%;
+  text-align: center;
+  border-radius: 3px;
+}
+
 #btn-logout {
   width: 60px;
   height: 28px;
   font-size: 11px;
   border: none;
   border-radius: 5px;
-}
+  margin-top: 10px;
+}#btn-logout:hover { background-color: rgba(17, 48, 69, 0.25); }
+
 </style>
 <body>
 <div class="container">
@@ -39,9 +86,34 @@
   </div>
 
   <div class="loginBox">
-      <div><h3>사용자 학번</h3><p id="studentNum">202012345</p></div>
-      <a href="/logout"><button id="btn-logout">LOGOUT</button></a>
+    <h3>안녕하세요. 가상 도서관 시스템입니다.</h3>
+    <div>
+      <h4 id="userNum">사용자 학번</h4>
+      <h5 th:text="202012345" id="studentNum"></h5>
     </div>
-  </div>
-</div>
+
+    <div class="infoBox">
+
+      <div class="bookBox">
+        <div id="rentCount">
+          <p>대출권수</p>
+          <h6 th:text="'5권'">권</h6>
+        </div>
+        <div id="overdue">
+          <p>연체권수</p>
+          <h6 th:text="5권">권</h6>
+        </div>
+      </div>
+
+      <div class="seatBox">
+        <h4>일반열람실 발권 정보</h4>
+        <p>좌석번호</p>
+        <h6 th:text="${seat_id} + '번'"></h6>
+      </div>
+
+    </div> <!-- infoBox -->
+    <a href="/logout"><button id="btn-logout">LOGOUT</button></a>
+  </div> <!-- loginBox -->
+</div> <!-- container -->
 </body>
+</html>
