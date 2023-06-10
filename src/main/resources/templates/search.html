@@ -6,6 +6,8 @@
     <!--    <link rel="stylesheet" type="text/css" href="/css/search.css">-->
     <title>홈페이지</title>
     <link th:href="@{/css/search.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/search.js"></script>
 </head>
 <body>
 <div class="container">
@@ -20,6 +22,7 @@
         <td>제목</td>
         <td>내용</td>
         <td>대출가능여부</td>
+        <td>예약</td>
         </thead>
         <tbody>
         <tr th:each="book : ${books.content}">
@@ -29,6 +32,9 @@
             <td th:class="content"><a th:class="content"  th:href="@{/book/content(bookId = ${book.bookId})}" th:utext="${book.content}"></a></td>
             <td th:if="${book.isRent== false}" th:class="css1">대출 가능</td>
             <td th:if="${book.isRent == true}" th:class="css2">대출 불가능</td>
+            <td>
+                <button type="button" th:onclick="javascript:reserve([[${book.bookId}]], 201513384)"> 예약</button>
+            </td>
         </tr>
 
         </tbody>
