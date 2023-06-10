@@ -23,17 +23,14 @@
                     <td th:each="group : ${group_row}">
                         <table class="seat_table">
                             <tr th:each="seat_row : ${group}">
-                                <td th:each="seat : ${seat_row}" class="btn-group">
-                                    <button th:if="${seat.student_id} == ${student_id}" class="my_seat"
-                                            th:onclick="javascript:setValue([[${seat.seat_id}]],[[${seat.enable}]])">
+                                <td th:each="seat : ${seat_row}" class="btn-group" th:onclick="javascript:setValue([[${seat.seat_id}]], [[${seat.enable}]], [[${loginId}]])">
+                                    <button th:if="${seat.student_id} == ${loginId}" class="my_seat">
                                         [[${seat.seat_id}]]
                                     </button>
-                                    <button th:if="${seat.student_id} != ${student_id} and !${seat.enable}" class="unable_seat"
-                                            th:onclick="javascript:setValue([[${seat.seat_id}]],[[${seat.enable}]])">
+                                    <button th:if="${seat.student_id} != ${loginId} and !${seat.enable}" class="unable_seat">
                                         [[${seat.seat_id}]]
                                     </button>
-                                    <button th:if="${seat.student_id} != ${student_id} and ${seat.enable}" class="enable_seat"
-                                            th:onclick="javascript:setValue([[${seat.seat_id}]],[[${seat.enable}]])">
+                                    <button th:if="${seat.student_id} != ${loginId} and ${seat.enable}" class="enable_seat">
                                         [[${seat.seat_id}]]
                                     </button>
                                 </td>

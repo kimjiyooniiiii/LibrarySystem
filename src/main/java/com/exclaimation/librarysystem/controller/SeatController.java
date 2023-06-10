@@ -4,6 +4,8 @@ package com.exclaimation.librarysystem.controller;
 import com.exclaimation.librarysystem.domain.Seat;
 import com.exclaimation.librarysystem.service.SeatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +22,19 @@ public class SeatController {
         this.seatService = seatService;
     }
 
-    @RequestMapping(value = "/seat", method = RequestMethod.GET)
-    public String seat(String student_id, Model model){
-        System.out.println(student_id);
-        if(student_id == null)
-        {
+    @GetMapping("/seat")
+    public String seat(Model model,
+                @AuthenticationPrincipal UserDetails userDetails){
+
+        model.addAttribute("userRole", "ADMIN");
+        if(userDetails != null) {
+            model.addAttribute("loginId", userDetails.getUsername());
+            model.addAttribute("loginRoles", userDetails.getAuthorities());
+        }
+        else{
             System.out.println("로그인이 필요한 서비스입니다.");
         }
+
         // 48
         ArrayList<Seat.Simple> seats = (ArrayList<Seat.Simple>) seatService.findSeats();
 
@@ -58,9 +66,6 @@ public class SeatController {
         }
 
         model.addAttribute("groups", groups);
-        model.addAttribute("student_id", student_id);
-
-
         return "seat/seat";
     }
 

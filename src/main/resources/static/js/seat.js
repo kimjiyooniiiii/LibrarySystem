@@ -2,13 +2,13 @@
 var urlParams = new URLSearchParams(window.location.search);
 
 var seat_id = 0; // 현재 좌석 선택안하고 확인시 에러 발생
-var student_id = urlParams.get('student_id');
+var student_id = "0";
 var enable = true;
 
-function setValue(value, state) {
+function setValue(value, state, st_id) {
     seat_id = value;
     enable = state;
-
+    student_id = st_id;
     console.log(seat_id);
     console.log(student_id);
     if(enable) console.log("true")
@@ -44,11 +44,6 @@ function submit() {
     form.submit();
     document.body.removeChild(form);                
 }
-
-function returnSeat() {
-    
-}
-
 
 $(document).ready(function(){
     $(".btn-group button").click(function(){

@@ -34,12 +34,12 @@
         </tr>
         <tr>
             <td th:if="${userRole} == ADMIN " >
-                <button type="button" th:onclick="javascript:rent([[${book.id}]], 201513384)"> 대출 </button>
+                <button type="button" th:onclick="javascript:rent([[${book.id}]], [[${loginId}]])"> 대출 </button>
                 <button type="button" th:onclick="javascript:bookReturn([[${book.id}]])"> 반납 </button>
             </td>
 
             <td th:if="${userRole} == USER ">
-                <button type="button" th:onclick="javascript:reserve([[${book.id}]], 201513384)"> 예약</button>
+                <button type="button" th:onclick="javascript:reserve([[${book.id}]], [[${loginId}]])"> 예약</button>
             </td>
         </tr>
     </table>
