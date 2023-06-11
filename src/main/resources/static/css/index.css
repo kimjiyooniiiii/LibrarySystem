@@ -77,10 +77,6 @@ img {
     font-size: 14px;
     margin-right: 285px;
 }
-#labelRePw {
-    font-size: 14px;
-    margin-right: 260px;
-}
 #loginId {
     display: block;
     width: 77.8%;
@@ -103,16 +99,6 @@ img {
     margin-top: 5px;
 }
 
-#PwCheck {
-    display: block;
-    width: 77.8%;
-    height: 35px;
-    border: 1px solid rgba(114, 143, 157, 0.93);
-    border-radius: 5px;
-    padding-left: 15px;
-    margin: 0 auto;
-    margin-top: 5px;
-}
 #btn-login {
     width: 82%;
     height: 35px;
@@ -122,6 +108,59 @@ img {
 }#btn-login:active {
     background-color: rgba(17, 48, 69, 0.25);
 }
+
+/* 로그인 성공 시*/
+h6 { font-size: 14px; }
+
+p {
+  color: gray;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+#userNum, #studentNum { margin-right: 200px; }
+
+.infoBox {
+  display: inline-block;
+  width: 100%;
+  margin-top: -35px;
+}
+
+.bookBox {
+  display: inline-block;
+  background-color: white;
+  width: 40%;
+  height: 100px;
+  border-radius: 3px;
+  vertical-align: bottom;
+  margin-right: 20px;
+}
+#rentCount {
+  display: inline-block;
+  text-align: center;
+  margin-right: 15px;
+}
+#overdue {
+  display: inline-block;
+  text-align: center;
+}
+
+.seatBox {
+  display: inline-block;
+  background-color: white;
+  width: 40%;
+  text-align: center;
+  border-radius: 3px;
+}
+
+#btn-logout {
+  width: 60px;
+  height: 28px;
+  font-size: 11px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}#btn-logout:hover { background-color: rgba(17, 48, 69, 0.25); }
 
 @media screen and (max-width:500px) {
     /* 모바일 CSS*/
