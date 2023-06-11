@@ -1,5 +1,8 @@
 package com.exclaimation.librarysystem.controller;
 
+import com.exclaimation.librarysystem.service.RentService;
+import com.exclaimation.librarysystem.service.SeatService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -14,10 +17,33 @@ import java.util.List;
 @RequestMapping("")
 public class IndexController {
 
+    private final SeatService seatService;
+    private final RentService rentService;
+
+    @Autowired
+    public IndexController(SeatService seatService, RentService rentService) {
+        this.seatService = seatService;
+        this.rentService = rentService;
+    }
+
     @GetMapping("")
     public String index(@AuthenticationPrincipal User userDetails, Model model) {
 
         if(userDetails != null) {
+            // 현재 사용중인 좌석번호 출력
+            Long seatId = seatService.getSeatIdByStudentId(userDetails.getUsername());
+            if(seatId != 0l)
+                model.addAttribute("seatId", seatId);
+            else
+                model.addAttribute("seatId", null);
+
+            // 현재 대출권수, 연체권수 출력
+            int rentBookCnt = rentService.getRentBookCnt(userDetails.getUsername());
+            int delayBookCnt = rentService.getDelayBookCnt(userDetails.getUsername());
+            model.addAttribute("rentBookCnt", rentBookCnt);
+            model.addAttribute("delayBookCnt", delayBookCnt);
+
+
             model.addAttribute("loginId", userDetails.getUsername());
             model.addAttribute("loginRoles", userDetails.getAuthorities());
             List<GrantedAuthority> str = userDetails.getAuthorities().stream().toList();
