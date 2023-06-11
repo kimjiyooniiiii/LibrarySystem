@@ -10,13 +10,14 @@
 </html>
 
 <body>
-<form>
   <div class="container">
     <a href="/admin/search"><img src="../images/곰두리지휘자.png"></a>
     <h1>관리자 페이지</h1>
-    <div id="searchTitle"><h3>도서 검색</h3></div>
-    <input type="text" name="keyword" placeholder="도서명, 도서 내용, 저자 등 검색어를 입력하세요." id="search">
-    <button type="submit" id="clickBtn">확인</button>
+    <form action="" method="get">
+      <div id="searchTitle"><h3>도서 검색</h3></div>
+      <input type="text" name="keyword" placeholder="도서명, 도서 내용, 저자 등 검색어를 입력하세요." id="search">
+      <button type="submit" id="clickBtn">확인</button>
+    </form>
 
     <div class="menu">
       <a href="/admin/rentList" id="one">
@@ -27,5 +28,4 @@
       </a>
     </div>
   </div>
-</form>
 </body>
