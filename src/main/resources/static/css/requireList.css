@@ -9,5 +9,7 @@ img {
 
 table {
     width: 60%;
+    border-collapse: collapse;
     margin: 0 auto;
 }
+th { background-color: rgba(76, 121, 187, 0.4); }
