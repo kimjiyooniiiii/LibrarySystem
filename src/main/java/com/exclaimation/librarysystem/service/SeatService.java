@@ -36,6 +36,15 @@ public class SeatService {
         );
     }
 
+    public Long getSeatIdByStudentId(String studentId){
+        List<SeatEntity> seat = seatRepository.findByStudentId(studentId);
+
+        if(seat.size() == 0)
+            return 0l;
+        else
+            return seat.get(0).getSeat_id();
+    }
+
     public void updateSeat(Seat.Simple seatForm){
 
         SeatEntity seatEntity = seatRepository.findById(seatForm.getSeat_id()).orElseThrow(
