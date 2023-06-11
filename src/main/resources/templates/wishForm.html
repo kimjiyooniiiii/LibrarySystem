@@ -8,6 +8,7 @@
     <title>희망 도서 신청</title>
 </head>
 <body>
+
 <div class="container">
     <a href="../"><img src="/images/곰두리지휘자.png"></a>
     <form action="/auth/book/require" method="post">
@@ -25,11 +26,11 @@
                     <td><label for="writer">저자</label>
                         <input type="text" id="writer" name="author" placeholder="저자를 입력하세요" class="listInfo" style="width:610px;"></td>
                 </tr>
+                    <tr>
+                        <td><label for="publisher">출판사</label>
+                            <input type="text" id="publisher" name="publisher" placeholder="출판사를 입력하세요" class="listInfo" style="width:590px;"></td>
+                    </tr>
 
-                <tr>
-                    <td><label for="publisher">출판사</label>
-                        <input type="text" id="publisher" name="publisher" placeholder="출판사를 입력하세요" class="listInfo" style="width:590px;"></td>
-                </tr>
 
                 <tr>
                     <td><label for="year">발행년도</label>
@@ -41,15 +42,15 @@
                         <input type="tel" id="tel" name="phoneNumber" placeholder="전화번호를 입력하세요" class="listInfo" style="width:490px;"></td>
                 </tr>
 
-                <tr>
-                    <td>
-                        <button type="submit" id="btn">신청</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </form>
-</div>
+                    <tr>
+                        <td>
+                            <button type="submit" id="btn">신청</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

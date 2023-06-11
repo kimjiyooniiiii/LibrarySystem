@@ -5,53 +5,52 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/seat.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/seat.js"></script>
-
 </head>
 
 <body>
-<div class="container">
-    <a href="../"><img src="images/곰두리지휘자.png"></a>
-        <table id="group_table">
-            <thead>
-                <h1 id="title">열람실 현황</h1>
-            </thead>
+    <div class="container">
+        <a href="../"><img src="images/곰두리지휘자.png"></a>
+            <table id="group_table">
+                <thead>
+                    <h1 id="title">열람실 현황</h1>
+                </thead>
 
-            <tbody>
-                <tr th:each="group_row : ${groups}">
-                    <td th:each="group : ${group_row}">
-                        <table class="seat_table">
-                            <tr th:each="seat_row : ${group}">
-                                <td th:each="seat : ${seat_row}" class="btn-group" th:onclick="javascript:setValue([[${seat.seat_id}]], [[${seat.enable}]], [[${loginId}]])">
-                                    <button th:if="${seat.student_id} == ${loginId}" class="my_seat">
-                                        [[${seat.seat_id}]]
-                                    </button>
-                                    <button th:if="${seat.student_id} != ${loginId} and !${seat.enable}" class="unable_seat">
-                                        [[${seat.seat_id}]]
-                                    </button>
-                                    <button th:if="${seat.student_id} != ${loginId} and ${seat.enable}" class="enable_seat">
-                                        [[${seat.seat_id}]]
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </tbody>
+                <tbody>
+                    <tr th:each="group_row : ${groups}">
+                        <td th:each="group : ${group_row}">
+                            <table class="seat_table">
+                                <tr th:each="seat_row : ${group}">
+                                    <td th:each="seat : ${seat_row}" class="btn-group" th:onclick="javascript:setValue([[${seat.seat_id}]], [[${seat.enable}]], [[${loginId}]])">
+                                        <button th:if="${seat.student_id} == ${loginId}" class="my_seat">
+                                            [[${seat.seat_id}]]
+                                        </button>
+                                        <button th:if="${seat.student_id} != ${loginId} and !${seat.enable}" class="unable_seat">
+                                            [[${seat.seat_id}]]
+                                        </button>
+                                        <button th:if="${seat.student_id} != ${loginId} and ${seat.enable}" class="enable_seat">
+                                            [[${seat.seat_id}]]
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
 
-            <tfoot>
-                <tr>
-                    <td>
-                        <i style="background-color: #C0E2FB">&nbsp;&nbsp;&nbsp;</i>:예약가능
-                        <i style="background-color: #FFF; border: 1px solid black;">&nbsp;&nbsp;&nbsp;</i>:예약 불가능
-                    </td>
-                    <td class="btn-group">
-                        <button type="button" class="my_button" th:onclick="javascript:submit()">확인</button>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+                <tfoot>
+                    <tr>
+                        <td>
+                            <i style="background-color: #C0E2FB">&nbsp;&nbsp;&nbsp;</i>:예약가능
+                            <i style="background-color: #FFF; border: 1px solid black;">&nbsp;&nbsp;&nbsp;</i>:예약 불가능
+                        </td>
+                        <td class="btn-group">
+                            <button type="button" class="my_button" th:onclick="javascript:submit()">확인</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/seat.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 var urlParams = new URLSearchParams(window.location.search);
 
 var seat_id = 0; // 현재 좌석 선택안하고 확인시 에러 발생
