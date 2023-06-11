@@ -14,13 +14,15 @@ public class RentService {
         this.rentRepository = rentRepository;
     }
 
-    public int rent(Long book_id, String student_id){
-
+    public boolean isRent(Long book_id, String student_id){
         List<RentEntity> re = rentRepository.findByBookId(book_id);
         if(re.size() != 0){
             System.out.println("대출자가 이미 존재합니다");
-            return -1;
+            return false;
         }
+        return true;
+    }
+    public void rent(Long book_id, String student_id){
         RentEntity rentEntity = new RentEntity();
         rentEntity.setBook_id(book_id);
         rentEntity.setStudent_id(student_id);
@@ -31,8 +33,6 @@ public class RentService {
         rentEntity.set_continue(false);
 
         rentRepository.save(rentEntity);
-        System.out.println("정상적으로 도서를 대출하였습니다");
-        return 0;
     }
 
     public int returnBook(Long book_id){

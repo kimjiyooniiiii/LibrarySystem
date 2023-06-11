@@ -14,4 +14,11 @@ public class BookData {
         private String content;
         private String author;
     }
+
+    @Getter
+    @Setter
+    public static class rentRequest{
+        private Long bookId;
+        private String studentId;
+    }
 }

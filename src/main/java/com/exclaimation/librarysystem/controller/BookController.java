@@ -57,32 +57,32 @@ public class BookController {
     }
 
     // 대출
-    @PostMapping("/rent")
-    public String rent(
-            @RequestParam(value = "book_id") Long book_id)  throws IllegalAccessException{
-
-        // 예약자 중 가장 빠른 사람에게 대출
-        Long r_id = reserveService.fastReservationIdByBookId(book_id);
-        if (r_id == 0) {
-            System.out.println("예약자가 없습니다");
-        } else {
-            ReserveEntity reserveEntity = reserveService.findById(r_id);
-            int result = rentService.rent(reserveEntity.getBook_id(), reserveEntity.getStudent_id());
-
-            if (result != 0) {
-                System.out.println("대출 insert 에러발생");
-                return "rent";
-            }
-
-            result = reserveService.deleteById(r_id);
-            if (result != 0) {
-                System.out.println("예약 delete 에러 발생");
-                return "rent";
-            }
-        }
-
-        return "redirect:/";
-    }
+//    @PostMapping("/rent")
+//    public String rent(
+//            @RequestParam(value = "book_id") Long book_id)  throws IllegalAccessException{
+//
+//        // 예약자 중 가장 빠른 사람에게 대출
+//        Long r_id = reserveService.fastReservationIdByBookId(book_id, out);
+//        if (r_id == 0) {
+//            System.out.println("예약자가 없습니다");
+//        } else {
+//            ReserveEntity reserveEntity = reserveService.findById(r_id);
+//            int result = rentService.rent(reserveEntity.getBook_id(), reserveEntity.getStudent_id());
+//
+//            if (result != 0) {
+//                System.out.println("대출 insert 에러발생");
+//                return "rent";
+//            }
+//
+//            result = reserveService.deleteById(r_id);
+//            if (result != 0) {
+//                System.out.println("예약 delete 에러 발생");
+//                return "rent";
+//            }
+//        }
+//
+//        return "redirect:/";
+//    }
 
     //반납
     @PostMapping("/return")

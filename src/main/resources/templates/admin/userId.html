@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+        <label for="studentId" id="labelId">아이디</label>
+        <input id='studentId' name = 'studentId' placeholder="대출자의 학번을 입력해주세요" type="text">
+        <button type="button" onclick="onSubmit()">확인</button>
+        <button type="button" onclick="window.close()">취소</button>
+</div>
+
+<script th:inline="javascript">
+    function onSubmit(){
+        var bookId = [[${bookId}]];
+        console.log(bookId);
+        let studentId = document.getElementById("studentId").value
+        let form = document.createElement("form")
+
+        form.action = '/admin/rent';
+        form.method = 'post';
+
+        var student = document.createElement("input");
+        student.type = "text";
+        student.name = "studentId";
+        student.value = studentId;
+        form.appendChild(student);
+
+        var inputBookId = document.createElement("input");
+        inputBookId.type = "number";
+        inputBookId.name = "bookId";
+        inputBookId.value = bookId;
+        form.appendChild(inputBookId);
+
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <!--    <link rel="stylesheet" type="text/css" href="/css/search.css">-->
+    <title>홈페이지</title>
+    <link th:href="@{/css/search.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+
+    <a href="/"><img class="doori" src="/images/곰두리지휘자.png"></a>
+    <h4><span th:text="${keyword}"></span> 검색 결과</h4>
+
+    <table>
+        <thead>
+        <td>이미지</td>
+        <!--        <td>ID</td>-->
+        <td>제목</td>
+        <td>내용</td>
+        <td>대출가능여부</td>
+        <td>예약</td>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books.content}">
+            <td><a th:href="@{/book/content(bookId = ${book.bookId})}"><img th:src="${book.image}"></a></td>
+            <!--            <td><a th:class="content" th:href="@{/book/content(bookId = ${book.bookId})}" th:text="${book.bookId}"></a></td>-->
+            <td th:class="title"><a th:class="content" th:href="@{/book/content(bookId = ${book.bookId})}"
+                                    th:text="${book.title}"></a></td>
+            <td th:class="content"><a th:class="content" th:href="@{/book/content(bookId = ${book.bookId})}"
+                                      th:utext="${book.content}"></a></td>
+            <td th:if="${book.isRent== false}" th:class="css1">대출 가능</td>
+            <td th:if="${book.isRent == true}" th:class="css2">대출 불가능</td>
+
+            <td>
+                <button type="button" th:onclick="'window.open(\'' + @{/admin/userId(bookId=${book.bookId})} + '\' , \'popup\')'">대출</button>
+                <button type="button" th:onclick="javascript:bookReturn([[${book.bookId}]])"> 반납</button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <div class="page"
+         th:with="start = ${(books.number/maxPage)*maxPage+1}, end=(${(books.totalPages == 0) ? 1 : (start + (maxPage - 1) < books.totalPages ? start + (maxPage - 1) : books.totalPages)})">
+        <ul>
+            <li th:if="${start > 1}">
+                <a th:href="@{/book/search(page=0, keyword=${keyword})}" th:text="'<<'"></a></li>
+            </li>
+
+            <li th:if="${start > 1}">
+                <a th:href="@{/book/search(page=${start} - ${maxPage}, keyword=${keyword})}" th:text="'<'"></a>
+            </li>
+
+            <li th:each="page: ${#numbers.sequence(start, end)}">
+                <a th:href="@{/book/search(page=${page}-1,  keyword=${keyword})}" th:text="${page}"></a></li>
+            </li>
+
+            <li th:if="${end < books.totalPages}">
+                <a th:href="@{/book/search(page=${start} + ${maxPage}, keyword=${keyword})}" th:text="'>'"></a>
+            </li>
+
+            <li th:if="${end < books.totalPages}">
+                <a th:href="@{/book/search(page=${books.totalPages}-1, keyword=${keyword})}" th:text="'>>'"></a></li>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/search.js"></script>
+</body>
+</html>

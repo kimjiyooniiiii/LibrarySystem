@@ -16,7 +16,7 @@ public class ReserveService {
 
     public void makeReservation(Long book_id, String student_id){
 
-        List<ReserveEntity> list = reserveRepository.findByBookId(book_id);
+        List<ReserveEntity> list = reserveRepository.findByBookId(book_id).orElseThrow(NullPointerException::new);
         if( list.size() >= 3){
             System.out.println("예약자가 이미 3명이 존재하여 더이상 예약을 할 수 없습니다.");
             return;
@@ -31,20 +31,21 @@ public class ReserveService {
     }
 
     // delete
-    public Long fastReservationIdByBookId(Long book_id){
-        List<ReserveEntity> list = reserveRepository.findByBookId(book_id);
-        if(list.size() == 0)
-        {
-            System.out.println("예약자가 존재하지 않습니다.");
-            return 0l;
+    public boolean checkReservationIdByBookId(Long book_id, String studentId){
+        Optional<List<ReserveEntity>> list = reserveRepository.findByBookId(book_id);
+        if(list.isPresent()){
+            Optional<ReserveEntity> reserve = reserveRepository.findByBookIdAndStudentId(book_id, studentId);
+            if(reserve.isEmpty()){
+                return true;
+            }
+            else{
+                ReserveEntity entity = reserve.get();
+                reserveRepository.deleteById(entity.getReservation_id());
+                return false;
+            }
+        }else{
+            return false;
         }
-
-        Collections.sort(list, (ReserveEntity a, ReserveEntity b) ->
-            a.getReservation_date().compareTo(b.getReservation_date())
-                );
-
-        // 날짜가 가장 빠른 예약
-        return list.get(0).getReservation_id();
     }
 
     public ReserveEntity findById(Long reservation_id) throws IllegalAccessException {
