@@ -47,4 +47,34 @@ public class RentService {
         System.out.println("정상적으로 반납되었습니다");
         return 0;
     }
+
+    public int getRentBookCnt(String student_id){
+        List<RentEntity> re = rentRepository.findByStudentId(student_id);
+
+        int cnt = 0;
+        for(int i = 0; i < re.size(); i++){
+            LocalDate now = LocalDate.now();
+            LocalDate returnDate = re.get(i).getReturn_dt();
+
+            if(now.compareTo(returnDate) == -1)
+                cnt += 1;
+        }
+
+        return cnt;
+    }
+
+    public int getDelayBookCnt(String student_id){
+        List<RentEntity> re = rentRepository.findByStudentId(student_id);
+
+        int cnt = 0;
+        for(int i = 0; i < re.size(); i++){
+            LocalDate now = LocalDate.now();
+            LocalDate returnDate = re.get(i).getReturn_dt();
+
+            if(now.compareTo(returnDate) == 1)
+                cnt += 1;
+        }
+
+        return cnt;
+    }
 }

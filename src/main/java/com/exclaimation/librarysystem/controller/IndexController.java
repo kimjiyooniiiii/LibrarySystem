@@ -30,11 +30,19 @@ public class IndexController {
     public String index(@AuthenticationPrincipal User userDetails, Model model) {
 
         if(userDetails != null) {
+            // 현재 사용중인 좌석번호 출력
             Long seatId = seatService.getSeatIdByStudentId(userDetails.getUsername());
             if(seatId != 0l)
                 model.addAttribute("seatId", seatId);
             else
                 model.addAttribute("seatId", null);
+
+            // 현재 대출권수, 연체권수 출력
+            int rentBookCnt = rentService.getRentBookCnt(userDetails.getUsername());
+            int delayBookCnt = rentService.getDelayBookCnt(userDetails.getUsername());
+            model.addAttribute("rentBookCnt", rentBookCnt);
+            model.addAttribute("delayBookCnt", delayBookCnt);
+
 
             model.addAttribute("loginId", userDetails.getUsername());
             model.addAttribute("loginRoles", userDetails.getAuthorities());

@@ -53,11 +53,11 @@
           <div class="bookBox">
             <div id="rentCount">
               <p>대출권수</p>
-              <h6 th:text="'5권'">권</h6>
+              <h6 th:text="${rentBookCnt}+'권'">권</h6>
             </div>
             <div id="overdue">
               <p>연체권수</p>
-              <h6 th:text="5권">권</h6>
+              <h6 th:text="${delayBookCnt} + '권'">권</h6>
             </div>
           </div>
 
