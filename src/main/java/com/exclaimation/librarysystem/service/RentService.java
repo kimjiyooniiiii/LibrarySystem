@@ -56,7 +56,7 @@ public class RentService {
             LocalDate now = LocalDate.now();
             LocalDate returnDate = re.get(i).getReturn_dt();
 
-            if(now.compareTo(returnDate) == -1)
+            if(now.compareTo(returnDate) <= 0)
                 cnt += 1;
         }
 
@@ -71,7 +71,7 @@ public class RentService {
             LocalDate now = LocalDate.now();
             LocalDate returnDate = re.get(i).getReturn_dt();
 
-            if(now.compareTo(returnDate) == 1)
+            if(now.compareTo(returnDate) > 0)
                 cnt += 1;
         }
 
