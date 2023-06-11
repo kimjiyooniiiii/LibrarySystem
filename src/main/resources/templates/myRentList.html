@@ -9,8 +9,8 @@
 </head>
 <body>
 <div class="container">
-    <a href="/admin/search"><img src="../images/곰두리지휘자.png"></a>
-    <h1>이용자 대출 현황 </h1>
+    <a href="/"><img src="../images/곰두리지휘자.png"></a>
+    <h1>나의 대출 현황 </h1>
     <table border ="1">
       <thead>
       <tr>
@@ -39,7 +39,6 @@
         <td th:text="${rent.is_return}"></td>
         <td th:text="${rent.is_continue}"></td>
 
-        <td><a th:href="@{/books/{id}/returnBook(id = ${rent.rent_id})}">반납</a></td>
         <td><a th:href="@{/books/{id}/continue(id = ${rent.rent_id})}">연장</a></td>
       </tr>
       </tbody>
