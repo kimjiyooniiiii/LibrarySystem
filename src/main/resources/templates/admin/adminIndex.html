@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/admin_search.css">
+  <link rel="stylesheet" href="/css/adminIndex.css">
   <title>도서 페이지</title>
 </head>
 </html>
@@ -15,14 +15,14 @@
     <a href="/admin/search"><img src="../images/곰두리지휘자.png"></a>
     <h1>관리자 페이지</h1>
     <div id="searchTitle"><h3>도서 검색</h3></div>
-    <input type="text" name="title" placeholder="도서명, 도서 내용, 저자 등 검색어를 입력하세요." id="search">
-    <button type="submit" id="clickBtn" onclick = "location.href = '#' ">확인</button>
+    <input type="text" name="keyword" placeholder="도서명, 도서 내용, 저자 등 검색어를 입력하세요." id="search">
+    <button type="submit" id="clickBtn">확인</button>
 
     <div class="menu">
-      <a href="/rentList" id="one">
+      <a href="/admin/rentList" id="one">
         <div><h3>대출 현황</h3></div>
       </a>
-      <a href="/requireList" id="three">
+      <a href="/admin/requireList" id="three">
         <div><h3>희망 도서 목록</h3></div>
       </a>
     </div>

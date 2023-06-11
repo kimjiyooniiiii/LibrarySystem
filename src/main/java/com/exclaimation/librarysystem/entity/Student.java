@@ -1,13 +1,11 @@
 package com.exclaimation.librarysystem.entity;
 
-import com.exclaimation.librarysystem.domain.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Getter

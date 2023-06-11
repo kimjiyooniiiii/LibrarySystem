@@ -2,7 +2,7 @@
 
 function reserve(book_id, student_id){
     var form = document.createElement("form");
-    form.action = "/reservation";
+    form.action = "/book/reservation";
     form.method = "post";
 
     var inputBookId = document.createElement("input");
@@ -25,7 +25,7 @@ function reserve(book_id, student_id){
 
 function rent(book_id, student_id){
     var form = document.createElement("form");
-    form.action = "/rent";
+    form.action = "/book/rent";
     form.method = "post";
 
     var inputBookId = document.createElement("input");
@@ -48,7 +48,7 @@ function rent(book_id, student_id){
 
 function bookReturn(book_id){
     var form = document.createElement("form");
-    form.action = "/return";
+    form.action = "/book/return";
     form.method = "post";
 
     var inputBookId = document.createElement("input");

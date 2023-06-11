@@ -1,4 +1,4 @@
-package com.exclaimation.librarysystem.domain;
+package com.exclaimation.librarysystem.dto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;

@@ -1,4 +1,4 @@
-package com.exclaimation.librarysystem.domain;
+package com.exclaimation.librarysystem.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

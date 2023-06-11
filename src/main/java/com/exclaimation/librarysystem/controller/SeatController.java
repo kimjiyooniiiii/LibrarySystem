@@ -1,7 +1,7 @@
 package com.exclaimation.librarysystem.controller;
 
 
-import com.exclaimation.librarysystem.domain.Seat;
+import com.exclaimation.librarysystem.dto.Seat;
 import com.exclaimation.librarysystem.service.SeatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

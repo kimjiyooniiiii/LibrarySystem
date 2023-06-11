@@ -1,10 +1,7 @@
 package com.exclaimation.librarysystem.service;
 
-import com.exclaimation.librarysystem.domain.Seat;
 import com.exclaimation.librarysystem.entity.ReserveEntity;
-import com.exclaimation.librarysystem.entity.SeatEntity;
 import com.exclaimation.librarysystem.repository.ReserveRepository;
-import com.exclaimation.librarysystem.repository.SeatRepository;
 
 import java.time.LocalDate;
 import java.util.*;

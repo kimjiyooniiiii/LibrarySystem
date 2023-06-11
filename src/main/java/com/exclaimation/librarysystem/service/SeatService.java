@@ -1,6 +1,6 @@
 package com.exclaimation.librarysystem.service;
 
-import com.exclaimation.librarysystem.domain.Seat;
+import com.exclaimation.librarysystem.dto.Seat;
 import com.exclaimation.librarysystem.entity.SeatEntity;
 import com.exclaimation.librarysystem.repository.SeatRepository;
 import jakarta.transaction.Transactional;

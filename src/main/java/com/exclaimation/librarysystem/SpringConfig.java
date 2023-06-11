@@ -1,10 +1,8 @@
 package com.exclaimation.librarysystem;
 
-import com.exclaimation.librarysystem.repository.MemberRepository;
 import com.exclaimation.librarysystem.repository.RentRepository;
 import com.exclaimation.librarysystem.repository.ReserveRepository;
 import com.exclaimation.librarysystem.repository.SeatRepository;
-import com.exclaimation.librarysystem.service.MemberService;
 import com.exclaimation.librarysystem.service.RentService;
 import com.exclaimation.librarysystem.service.ReserveService;
 import com.exclaimation.librarysystem.service.SeatService;
@@ -25,12 +23,10 @@ public class SpringConfig {
     @Autowired
     public SpringConfig(EntityManager em,
                         SeatRepository seatRepository,
-                        MemberRepository memberRepository,
                         ReserveRepository reserveRepository,
                         RentRepository rentRepository){
         this.em = em;
         this.seatRepository = seatRepository;
-        this.memberRepository = memberRepository;
         this.reserveRepository = reserveRepository;
         this.rentRepository = rentRepository;
     }
@@ -47,11 +43,4 @@ public class SpringConfig {
         return new SeatService(seatRepository);
     }
 
-    private final MemberRepository memberRepository;
-
-    @Bean
-    public MemberService memberService() {
-        //return new MemberService(memberRepository()); //memberRepository를 연결함
-        return new MemberService(memberRepository); //스프링 데이터 JPA를 위해 사용함
-    }
 }

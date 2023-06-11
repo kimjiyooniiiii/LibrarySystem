@@ -7,22 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
-public class adminController {
+@RequestMapping("/admin")
+public class AdminController {
 
     @Autowired
     private final AdminService adminService;
 
-    public adminController(AdminService adminService) {
+    public AdminController(AdminService adminService) {
         this.adminService = adminService;
     }
 
-    @GetMapping("/admin/search")
+    @GetMapping("/search")
     public String searchPage() {
-        return "admin/admin_search";
+        return "admin/adminIndex";
     }
 
     // 회원들 대출 목록 보기
