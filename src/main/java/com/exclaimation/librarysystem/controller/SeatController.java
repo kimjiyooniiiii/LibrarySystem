@@ -73,7 +73,11 @@ public class SeatController {
     public String updateSeat(@RequestParam(value="seat_id") Long seat_id,
         @RequestParam(value="student_id") String student_id,
         @RequestParam(value="enable") Long enable){
-
+        
+        if(seat_id == 0l){
+            System.out.println("좌석 선택이 되지 않았습니다");
+            return "redirect:/";
+        }
         Seat.Simple form = new Seat.Simple();
         form.setSeat_id(seat_id);
         form.setStudent_id(student_id);

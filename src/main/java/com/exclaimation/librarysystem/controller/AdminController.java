@@ -39,7 +39,7 @@ public class AdminController {
         this.reserveService = reserveService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/adminIndex")
     public String searchPage() {
         return "admin/adminIndex";
     }

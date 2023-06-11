@@ -21,13 +21,12 @@ table {
     border-spacing: 0px 20px;
     margin: 0 auto;
 }
+th { background-color: rgba(157, 204, 236, 0.64); }
 td {
     background-color: #C0E2FB;
     padding: 5px 10px;
 }
-label {
-    font-size: 20px;
-}
+label { font-size: 20px; }
 
 .listInfo {
     height:20px;
