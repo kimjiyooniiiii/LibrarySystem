@@ -17,16 +17,19 @@
       <button type="submit" id="clickBtn">확인</button>
     </form>
 
-    <div class="menu">
-      <a href="/" id="one">
-        <div><h3>나의 대출 현황</h3></div>
-      </a>
-      <a href="/seat" id="two">
-        <div><h3>실시간 열람실</h3></div>
-      </a>
-      <a href="/wishForm" id="three">
-        <div><h3>희망 도서 신청</h3></div>
-      </a>
+
+  <div class="menu">
+    <a href="/" id="one">
+      <div><h3>나의 대출 현황</h3></div>
+    </a>
+    <a href="/seat" id="two">
+      <div><h3>실시간 열람실</h3></div>
+    </a>
+    <a href="/auth/book/require" id="three">
+      <div><h3>희망 도서 신청</h3></div>
+    </a>
+  </div>
+
     </div>
       <div class="loginBox" sec:authorize="!isAuthenticated">
         <h1>로그인</h1>

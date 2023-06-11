@@ -1,8 +1,11 @@
 package com.exclaimation.librarysystem.service;
 
+import com.exclaimation.librarysystem.domain.RequireDto;
 import com.exclaimation.librarysystem.domain.Role;
 import com.exclaimation.librarysystem.dto.Auth;
+import com.exclaimation.librarysystem.entity.Require;
 import com.exclaimation.librarysystem.entity.Student;
+import com.exclaimation.librarysystem.repository.RequireRepository;
 import com.exclaimation.librarysystem.repository.StudentRepository;
 import com.sun.jdi.request.DuplicateRequestException;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,10 +21,12 @@ public class AuthService {
 
     private final StudentRepository repository;
     private final PasswordEncoder passwordEncoder;
+    private final RequireRepository requireRepository;
 
-    public AuthService(StudentRepository repository, PasswordEncoder passwordEncoder) {
+    public AuthService(StudentRepository repository, PasswordEncoder passwordEncoder, RequireRepository requireRepository) {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
+        this.requireRepository = requireRepository;
     }
 
     public Optional<Student> findUser(String studentId) {
@@ -55,4 +60,18 @@ public class AuthService {
         }
     }
 
+    public void requireBook(String userId, RequireDto require) {
+        Student student = repository.findByStudentId(userId).orElseThrow();
+
+        Require newRequire = Require.builder()
+                .student(student)
+                .title(require.getTitle())
+                .author(require.getAuthor())
+                .phoneNumber(require.getPhoneNumber())
+                .publisher(require.getPublisher())
+                .year(require.getYear())
+                .build();
+
+        requireRepository.save(newRequire);
+    }
 }

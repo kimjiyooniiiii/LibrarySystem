@@ -72,9 +72,9 @@ public class TestController {
         return "redirect:/";
     }
 
-    @GetMapping("/wishForm")
-    public String wishBook() {
-        return "wishForm";
-    }
+//    @GetMapping("/wishForm")
+//    public String wishBook() {
+//        return "wishForm";
+//    }
 
 }
