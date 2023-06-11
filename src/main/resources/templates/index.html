@@ -43,9 +43,31 @@
         </form>
       </div>
       <div class="loginBox" sec:authorize="isAuthenticated">
-        <p th:text = "${loginId}"></p>
-        <p th:text = "${loginRoles}"></p>
-        <a href="/logout">logout</a>
+        <h3>안녕하세요. 가상 도서관 시스템입니다.</h3>
+        <div>
+          <h4 id="userNum">사용자 학번</h4>
+          <h5 th:text="${loginId}" id="studentNum"></h5>
+        </div>
+
+        <div class="infoBox">
+          <div class="bookBox">
+            <div id="rentCount">
+              <p>대출권수</p>
+              <h6 th:text="'5권'">권</h6>
+            </div>
+            <div id="overdue">
+              <p>연체권수</p>
+              <h6 th:text="5권">권</h6>
+            </div>
+          </div>
+
+          <div class="seatBox">
+            <h4>일반열람실 발권 정보</h4>
+            <p>좌석번호</p>
+            <h6 th:text="${seatId} + '번'"></h6>
+          </div>
+        </div> <!-- infoBox -->
+        <a href="/logout"><button id="btn-logout">LOGOUT</button></a>
       </div>
     </div>
 </body>
