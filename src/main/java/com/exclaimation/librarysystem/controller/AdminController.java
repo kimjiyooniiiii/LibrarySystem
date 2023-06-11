@@ -22,7 +22,7 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @GetMapping("/search")
+    @GetMapping("/index")
     public String searchPage() {
         return "admin/adminIndex";
     }
