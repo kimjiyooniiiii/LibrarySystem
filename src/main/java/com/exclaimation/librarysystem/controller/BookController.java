@@ -4,11 +4,15 @@ import com.exclaimation.librarysystem.entity.ReserveEntity;
 import com.exclaimation.librarysystem.service.BookService;
 import com.exclaimation.librarysystem.service.RentService;
 import com.exclaimation.librarysystem.service.ReserveService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 
 @Controller
 @RequestMapping("/book")
@@ -86,14 +90,27 @@ public class BookController {
 
     //반납
     @PostMapping("/return")
-    public String returnBook(
-            @RequestParam(value = "book_id") Long book_id) {
+    public void returnBook(
+            HttpServletResponse response,
+            @RequestParam(value = "rent_id") Long rent_id) throws IOException {
+        response.setContentType("text/html; charset= UTF-8");
+        response.setCharacterEncoding("UTF8");
 
-        int result = rentService.returnBook(book_id);
-
-        return "redirect:/";
+        PrintWriter out = response.getWriter();
+        rentService.returnRent(rent_id, out);
     }
 
+    //반납
+    @PostMapping("/return/bookId")
+    public void returnBookId(
+            HttpServletResponse response,
+            @RequestParam(value = "book_id") Long rent_id) throws IOException {
+        response.setContentType("text/html; charset= UTF-8");
+        response.setCharacterEncoding("UTF8");
+
+        PrintWriter out = response.getWriter();
+        rentService.returnBook(rent_id, out);
+    }
     //예약
     @PostMapping("/reservation")
     public String reservation(

@@ -1,26 +1,31 @@
 package com.exclaimation.librarysystem.service;
 
+import com.exclaimation.librarysystem.entity.Book;
 import com.exclaimation.librarysystem.entity.RentEntity;
+import com.exclaimation.librarysystem.repository.BookRepository;
 import com.exclaimation.librarysystem.repository.RentRepository;
 
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public class RentService {
 
     private final RentRepository rentRepository;
-
-    public RentService(RentRepository rentRepository) {
+    private final BookRepository bookRepository;
+    public RentService(RentRepository rentRepository, BookRepository bookRepository) {
         this.rentRepository = rentRepository;
+        this.bookRepository = bookRepository;
     }
 
     public boolean isRent(Long book_id, String student_id){
         List<RentEntity> re = rentRepository.findByBookId(book_id);
         if(re.size() != 0){
             System.out.println("대출자가 이미 존재합니다");
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
     public void rent(Long book_id, String student_id){
         RentEntity rentEntity = new RentEntity();
@@ -31,21 +36,38 @@ public class RentService {
 //        rentEntity.setSpare_dt();
         rentEntity.set_return(false);
         rentEntity.set_continue(false);
-
+        Optional<Book> entity = bookRepository.findById(book_id);
+        if(entity.isPresent()){
+            Book book = entity.get();
+            book.setRent(true);
+            bookRepository.save(book);
+        }
         rentRepository.save(rentEntity);
     }
 
-    public int returnBook(Long book_id){
+    public void returnBook(Long rentId, PrintWriter out)
+    {
 
-        List<RentEntity> re = rentRepository.findByBookId(book_id);
-        if(re.size() == 0){
+        List<RentEntity> entity = rentRepository.findByBookId(rentId);
+        if(entity.size() == 0){
+            out.println("<script>alert('반납할 수 없는 도서입니다'); window.close();</script> ");
+            out.flush();
             System.out.println("반납할 수 없는 도서입니다.");
-            return -1;
         }
-
-        rentRepository.deleteById(re.get(0).getRent_id());
-        System.out.println("정상적으로 반납되었습니다");
-        return 0;
+        else{
+            RentEntity rent = entity.get(0);
+            rent.set_return(true);
+            long bookId = rent.getBook_id();
+            Optional<Book> bookEntity = bookRepository.findById(bookId);
+            if(bookEntity.isPresent()){
+                Book book = bookEntity.get();
+                book.setRent(false);
+                bookRepository.save(book);
+            }
+            rentRepository.save(rent);
+            out.println("<script>alert('도서를 반납하였습니다.'); window.location.href='/admin/rentList';</script> ");
+            out.flush();
+        }
     }
 
     public int getRentBookCnt(String student_id){
@@ -76,5 +98,28 @@ public class RentService {
         }
 
         return cnt;
+    }
+
+    public void returnRent(Long studentId, PrintWriter out) {
+        List<RentEntity> entity = rentRepository.findByBookId(studentId);
+        if(entity.size() == 0){
+            out.println("<script>alert('반납할 수 없는 도서입니다'); window.close();</script> ");
+            out.flush();
+            System.out.println("반납할 수 없는 도서입니다.");
+        }
+        else{
+            RentEntity rent = entity.get(0);
+            rent.set_return(true);
+            long bookId = rent.getBook_id();
+            Optional<Book> bookEntity = bookRepository.findById(bookId);
+            if(bookEntity.isPresent()){
+                Book book = bookEntity.get();
+                book.setRent(false);
+                bookRepository.save(book);
+            }
+            rentRepository.save(rent);
+            out.println("<script>alert('도서를 반납하였습니다.'); window.location.href='/admin/rentList';</script> ");
+            out.flush();
+        }
     }
 }

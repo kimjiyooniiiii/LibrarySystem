@@ -16,7 +16,7 @@ public class ReserveService {
 
     public void makeReservation(Long book_id, String student_id){
 
-        List<ReserveEntity> list = reserveRepository.findByBookId(book_id).orElseThrow(NullPointerException::new);
+        List<ReserveEntity> list = reserveRepository.findByBookId(book_id);
         if( list.size() >= 3){
             System.out.println("예약자가 이미 3명이 존재하여 더이상 예약을 할 수 없습니다.");
             return;
@@ -32,8 +32,8 @@ public class ReserveService {
 
     // delete
     public boolean checkReservationIdByBookId(Long book_id, String studentId){
-        Optional<List<ReserveEntity>> list = reserveRepository.findByBookId(book_id);
-        if(list.isPresent()){
+        List<ReserveEntity> list = reserveRepository.findByBookId(book_id);
+        if(0!=list.size()){
             Optional<ReserveEntity> reserve = reserveRepository.findByBookIdAndStudentId(book_id, studentId);
             if(reserve.isEmpty()){
                 return true;

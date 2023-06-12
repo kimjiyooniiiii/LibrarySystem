@@ -1,5 +1,6 @@
 package com.exclaimation.librarysystem;
 
+import com.exclaimation.librarysystem.repository.BookRepository;
 import com.exclaimation.librarysystem.repository.RentRepository;
 import com.exclaimation.librarysystem.repository.ReserveRepository;
 import com.exclaimation.librarysystem.repository.SeatRepository;
@@ -20,18 +21,20 @@ public class SpringConfig {
     private final SeatRepository seatRepository;
     private final ReserveRepository reserveRepository;
     private final RentRepository rentRepository;
+    private final BookRepository bookRepository;
     @Autowired
     public SpringConfig(EntityManager em,
                         SeatRepository seatRepository,
                         ReserveRepository reserveRepository,
-                        RentRepository rentRepository){
+                        RentRepository rentRepository, BookRepository bookRepository){
         this.em = em;
         this.seatRepository = seatRepository;
         this.reserveRepository = reserveRepository;
         this.rentRepository = rentRepository;
+        this.bookRepository = bookRepository;
     }
     @Bean
-    public RentService rentService(){ return  new RentService(rentRepository); }
+    public RentService rentService(){ return  new RentService(rentRepository, bookRepository); }
 
     @Bean
     public ReserveService reserveService(){

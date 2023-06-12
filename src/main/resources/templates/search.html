@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
 
@@ -32,12 +32,7 @@
                 <td th:if="${book.isRent == true}" th:class="css2">대출 불가능</td>
 
 
-                <td th:if="${userRole} == ADMIN " >
-                    <button type="button" th:onclick="javascript:rent([[${book.bookId}]], [[${loginId}]])"> 대출 </button>
-                    <button type="button" th:onclick="javascript:bookReturn([[${book.bookId}]])"> 반납 </button>
-                </td>
-
-                <td th:if="${userRole} == USER ">
+                <td sec:authorize="isAuthenticated">
                     <button type="button" th:onclick="javascript:reserve([[${book.bookId}]], [[${loginId}]])"> 예약</button>
                 </td>
             </tr>

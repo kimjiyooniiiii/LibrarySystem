@@ -71,7 +71,7 @@ function getUserId(book_id){
 
 function bookReturn(book_id){
     var form = document.createElement("form");
-    form.action = "/book/return";
+    form.action = "/book/return/bookId";
     form.method = "post";
 
     var inputBookId = document.createElement("input");
