@@ -7,6 +7,7 @@ import com.exclaimation.librarysystem.repository.RequireRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,8 +27,13 @@ public class AdminService {
     // 회원들 대출 목록 보기
     public List<RentEntity> showRentList() {
         List<RentEntity> rentList = rentRepository.findAll();
-
-        return rentList;
+        // 반납 안된 목록만 보기
+        List<RentEntity> nowRentList = new ArrayList<>();
+        for(int i = 0; i < rentList.size(); i++){
+            if(!rentList.get(i).is_return())
+                nowRentList.add(rentList.get(i));
+        }
+        return nowRentList;
     }
 
     // 희망 도서 목록 보기
