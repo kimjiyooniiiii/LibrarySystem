@@ -76,6 +76,11 @@ public class RentService {
 
         int cnt = 0;
         for(int i = 0; i < re.size(); i++){
+            // 반납여부 확인
+            if(re.get(i).is_return())
+                continue;
+
+            // 날짜 비교
             LocalDate now = LocalDate.now();
             LocalDate returnDate = re.get(i).getReturn_dt();
 
@@ -91,6 +96,11 @@ public class RentService {
 
         int cnt = 0;
         for(int i = 0; i < re.size(); i++){
+            // 반납여부 확인
+            if(re.get(i).is_return())
+                continue;
+
+            // 날짜 비교
             LocalDate now = LocalDate.now();
             LocalDate returnDate = re.get(i).getReturn_dt();
 

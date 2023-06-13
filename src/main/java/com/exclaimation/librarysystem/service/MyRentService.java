@@ -4,6 +4,7 @@ import com.exclaimation.librarysystem.entity.RentEntity;
 import com.exclaimation.librarysystem.repository.RentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,6 +20,11 @@ public class MyRentService {
 
         List<RentEntity> rentList = rentRepository.findByStudentId(studentId);
 
-        return rentList;
+        List<RentEntity> nowRentList = new ArrayList<>();
+        for(int i = 0; i < rentList.size(); i++){
+            if(!rentList.get(i).is_return())
+                nowRentList.add(rentList.get(i));
+        }
+        return nowRentList;
     }
 }
