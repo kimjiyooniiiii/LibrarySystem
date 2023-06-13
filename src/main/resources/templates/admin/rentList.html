@@ -21,6 +21,7 @@
         <tr>
             <td>대출번호</td>
             <td>책 번호</td>
+            <td>책 이름</td>
             <td>학번</td>
             <td>대출일</td>
             <td>반납일</td>
@@ -32,6 +33,7 @@
         <tr th:each="rent : ${rentList}">
             <td th:text="${rent.rent_id}"></td>
             <td th:text="${rent.book_id}"></td>
+            <td th:text="${rent.book_name}"></td>
             <td th:text="${rent.student_id}"></td>
             <td th:text="${rent.rent_dt}"></td>
             <td th:text="${rent.return_dt}"></td>

@@ -63,6 +63,7 @@ public class AdminController {
         return "admin/userId";
     }
 
+    // 대출
     @PostMapping("/rent")
     public void rentBook(HttpServletResponse response, BookData.rentRequest book) throws IOException {
 

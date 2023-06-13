@@ -36,6 +36,7 @@ public class RentService {
 //        rentEntity.setSpare_dt();
         rentEntity.set_return(false);
         rentEntity.set_continue(false);
+        rentEntity.setBook_name(bookRepository.findById(book_id).get().getTitle());
         Optional<Book> entity = bookRepository.findById(book_id);
         if(entity.isPresent()){
             Book book = entity.get();

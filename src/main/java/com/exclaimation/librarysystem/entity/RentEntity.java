@@ -22,6 +22,9 @@ public class RentEntity {
     private String student_id;
 
     @Column
+    private String book_name;
+
+    @Column
     private LocalDate rent_dt;
 
     @Column
