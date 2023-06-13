@@ -39,7 +39,7 @@ public class IndexController {
             if(seatId != 0l)
                 model.addAttribute("seatId", seatId);
             else
-                model.addAttribute("seatId", null);
+                model.addAttribute("seatId", "None");
 
             // 현재 대출권수, 연체권수 출력
             int rentBookCnt = rentService.getRentBookCnt(userDetails.getUsername());
