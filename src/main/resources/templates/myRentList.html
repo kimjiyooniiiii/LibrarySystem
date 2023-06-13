@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/rentList.css">
-  <title>Title</title>
+  <title>대출 목록</title>
 </head>
 <body>
 <div class="container">
@@ -35,10 +35,9 @@
         <td th:text="${rent.rent_dt}"></td>
         <td th:text="${rent.return_dt}"></td>
         <td th:text="${rent.spare_dt}"></td>
-        <td th:text="${rent.is_return}"></td>
         <td th:text="${rent.is_continue}"></td>
 
-        <td><a th:href="@{/books/{id}/continue(id = ${rent.rent_id})}">연장</a></td>
+        <td><a id="continueBtn" th:href="@{/books/{id}/continue(id = ${rent.rent_id})}">연장</a></td>
       </tr>
       </tbody>
     </table>

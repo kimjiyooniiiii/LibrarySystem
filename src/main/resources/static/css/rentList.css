@@ -15,11 +15,19 @@ table {
 }
 th { background-color: rgba(76, 121, 187, 0.4); }
 
+/* Administrator button*/
 button {
    display: inline-block;
    width: 100%;
    border: none;
    background-color: rgba(76, 121, 187, 0.3);
-} button:hover {
-    background-color: rgba(76, 121, 187, 0.4);
-}
+} button:hover { background-color: rgba(76, 121, 187, 0.4); }
+
+/* User continue button*/
+#continueBtn {
+   display: inline-block;
+   width: 100%;
+   border: none;
+   background-color: rgba(76, 121, 187, 0.3);
+   color: black;
+}#continueBtn:hover { background-color: rgba(76, 121, 187, 0.4); }

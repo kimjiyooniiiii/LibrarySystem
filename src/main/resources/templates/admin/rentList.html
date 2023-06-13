@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/rentList.css">
-    <title>Title</title>
+    <title>이용자 대출 목록</title>
 </head>
 <body>
 <div class="container">
@@ -14,7 +14,7 @@
     <table border="1">
         <thead>
         <tr>
-            <th colspan="11">대출 목록</th>
+            <th colspan="10">대출 목록</th>
         </tr>
         </thead>
         <tbody>
@@ -26,7 +26,6 @@
             <td>대출일</td>
             <td>반납일</td>
             <td>남은일수</td>
-            <td>반납여부</td>
             <td>연장여부</td>
         </tr>
 
@@ -38,7 +37,6 @@
             <td th:text="${rent.rent_dt}"></td>
             <td th:text="${rent.return_dt}"></td>
             <td th:text="${rent.spare_dt}"></td>
-            <td th:text="${rent.is_return}"></td>
             <td th:text="${rent.is_continue}"></td>
 
             <td><button th:onclick="javascript:returnBook([[${rent.rent_id}]])">반납</button></td>
