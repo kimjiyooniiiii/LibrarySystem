@@ -1,7 +1,9 @@
 package com.exclaimation.librarysystem.controller;
 
+import com.exclaimation.librarysystem.entity.Student;
 import com.exclaimation.librarysystem.service.RentService;
 import com.exclaimation.librarysystem.service.SeatService;
+import com.exclaimation.librarysystem.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,15 +21,17 @@ public class IndexController {
 
     private final SeatService seatService;
     private final RentService rentService;
+    private final StudentService studentService;
 
     @Autowired
-    public IndexController(SeatService seatService, RentService rentService) {
+    public IndexController(SeatService seatService, RentService rentService, StudentService studentService) {
         this.seatService = seatService;
         this.rentService = rentService;
+        this.studentService = studentService;
     }
 
     @GetMapping("")
-    public String index(@AuthenticationPrincipal User userDetails, Model model) {
+    public String index(@AuthenticationPrincipal User userDetails, Model model) throws IllegalAccessException {
 
         if(userDetails != null) {
             // 현재 사용중인 좌석번호 출력
@@ -40,6 +44,14 @@ public class IndexController {
             // 현재 대출권수, 연체권수 출력
             int rentBookCnt = rentService.getRentBookCnt(userDetails.getUsername());
             int delayBookCnt = rentService.getDelayBookCnt(userDetails.getUsername());
+
+            if(delayBookCnt > 0){
+                studentService.setDelay(userDetails.getUsername(), true);
+            }
+            else {
+                studentService.setDelay(userDetails.getUsername(), false);
+            }
+
             model.addAttribute("rentBookCnt", rentBookCnt);
             model.addAttribute("delayBookCnt", delayBookCnt);
 

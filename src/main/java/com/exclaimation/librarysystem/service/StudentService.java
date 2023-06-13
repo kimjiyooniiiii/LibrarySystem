@@ -16,4 +16,14 @@ public class StudentService {
 //        studentRepository.save(student);
 //        return student.getStudentId();
 //    }
+
+    public void setDelay(String student_id, boolean delay) throws IllegalAccessException {
+        Student student = studentRepository.findById(student_id).orElseThrow(
+                IllegalAccessException::new
+        );
+
+        student.setDelay(delay);
+        studentRepository.save(student);
+    }
+
 }
