@@ -100,15 +100,15 @@ public class RentService {
         return cnt;
     }
 
-    public void returnRent(Long studentId, PrintWriter out) {
-        List<RentEntity> entity = rentRepository.findByBookId(studentId);
-        if(entity.size() == 0){
+    public void returnRent(Long rentId, PrintWriter out) {
+        Optional<RentEntity> entity = rentRepository.findById(rentId);
+        if(entity.isEmpty()){
             out.println("<script>alert('반납할 수 없는 도서입니다'); window.close();</script> ");
             out.flush();
             System.out.println("반납할 수 없는 도서입니다.");
         }
         else{
-            RentEntity rent = entity.get(0);
+            RentEntity rent = entity.get();
             rent.set_return(true);
             long bookId = rent.getBook_id();
             Optional<Book> bookEntity = bookRepository.findById(bookId);
