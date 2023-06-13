@@ -14,3 +14,12 @@ table {
     margin: 0 auto;
 }
 th { background-color: rgba(76, 121, 187, 0.4); }
+
+button {
+   display: inline-block;
+   width: 100%;
+   border: none;
+   background-color: rgba(76, 121, 187, 0.3);
+} button:hover {
+    background-color: rgba(76, 121, 187, 0.4);
+}
