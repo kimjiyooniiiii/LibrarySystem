@@ -105,4 +105,13 @@ public class AdminController {
 
         return "admin/requireList";
     }
+
+    // 예약 도서 목록 보기
+    @GetMapping("/reserveList")
+    public String reserveList(Model model) {
+        List<ReserveEntity> reserveList = adminService.showReserveList();
+        model.addAttribute("reserveList", reserveList);
+
+        return "admin/reserveList";
+    }
 }

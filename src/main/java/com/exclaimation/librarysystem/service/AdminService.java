@@ -2,8 +2,10 @@ package com.exclaimation.librarysystem.service;
 
 import com.exclaimation.librarysystem.entity.RentEntity;
 import com.exclaimation.librarysystem.entity.Require;
+import com.exclaimation.librarysystem.entity.ReserveEntity;
 import com.exclaimation.librarysystem.repository.RentRepository;
 import com.exclaimation.librarysystem.repository.RequireRepository;
+import com.exclaimation.librarysystem.repository.ReserveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +21,13 @@ public class AdminService {
     @Autowired
     private final RequireRepository requireRepository;
 
-    public AdminService(RentRepository repository, RequireRepository requireRepository) {
+    @Autowired
+    private final ReserveRepository reserveRepository;
+
+    public AdminService(RentRepository repository, RequireRepository requireRepository, ReserveRepository reserveRepository) {
         this.rentRepository = repository;
         this.requireRepository = requireRepository;
+        this.reserveRepository = reserveRepository;
     }
 
     // 회원들 대출 목록 보기
@@ -41,5 +47,12 @@ public class AdminService {
         List<Require> requireList = requireRepository.findAll();
 
         return requireList;
+    }
+
+    // 예약 도서 목록 보기
+    public List<ReserveEntity> showReserveList() {
+        List<ReserveEntity> reserveList = reserveRepository.findAll();
+
+        return  reserveList;
     }
 }

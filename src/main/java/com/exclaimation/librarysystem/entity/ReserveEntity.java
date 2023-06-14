@@ -18,6 +18,9 @@ public class ReserveEntity {
     private Long book_id;
 
     @Column
+    private String book_name;
+
+    @Column
     private String student_id;
 
     @Column
