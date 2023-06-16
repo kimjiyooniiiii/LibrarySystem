@@ -50,6 +50,11 @@ img {
     font-size: 20px;
     margin-right: 50px;
 }
+#two {
+    display :inline-block;
+    font-size: 20px;
+    margin-right: 50px;
+}
 #three {
     display :inline-block;
     font-size: 20px;
