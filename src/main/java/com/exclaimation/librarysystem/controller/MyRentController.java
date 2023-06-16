@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
+// 나의 대출 현황
 @Controller
 public class MyRentController {
 

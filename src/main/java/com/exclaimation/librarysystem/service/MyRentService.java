@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+// 나의 대출 현황
 @Service
 public class MyRentService {
 

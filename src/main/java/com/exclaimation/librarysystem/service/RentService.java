@@ -7,6 +7,7 @@ import com.exclaimation.librarysystem.repository.RentRepository;
 
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,7 @@ public class RentService {
         rentEntity.setStudent_id(student_id);
         rentEntity.setRent_dt(LocalDate.now());
         rentEntity.setReturn_dt(LocalDate.now().plusDays(14));
-//        rentEntity.setSpare_dt();
+        rentEntity.setSpare_dt(14L);
         rentEntity.set_return(false);
         rentEntity.set_continue(false);
         rentEntity.setBook_name(bookRepository.findById(book_id).get().getTitle());
@@ -106,6 +107,7 @@ public class RentService {
 
             if(now.compareTo(returnDate) > 0)
                 cnt += 1;
+                re.get(i).setSpare_dt(Long.valueOf(Period.between(now, returnDate).getDays()));
         }
 
         return cnt;

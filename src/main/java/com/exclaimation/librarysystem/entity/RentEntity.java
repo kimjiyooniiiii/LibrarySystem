@@ -31,7 +31,7 @@ public class RentEntity {
     private LocalDate return_dt;
 
     @Column
-    private LocalDate spare_dt;
+    private Long spare_dt;
 
     @Column
     private boolean is_return; // 반납여부
