@@ -122,5 +122,16 @@ public class BookController {
         return "redirect:/";
     }
 
+    //내 도서 연장
+    @PostMapping("/renew")
+    public void renewBook(
+            HttpServletResponse response,
+            @RequestParam(value = "rent_id") Long rent_id) throws IOException {
+        response.setContentType("text/html; charset= UTF-8");
+        response.setCharacterEncoding("UTF8");
+
+        PrintWriter out = response.getWriter();
+        rentService.renewRent(rent_id, out);
+    }
 
 }

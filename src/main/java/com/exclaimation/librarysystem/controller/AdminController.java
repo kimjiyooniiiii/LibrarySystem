@@ -114,4 +114,16 @@ public class AdminController {
 
         return "admin/reserveList";
     }
+
+    //사용자 도서 연장
+    @PostMapping("/renew")
+    public void renewBook(
+            HttpServletResponse response,
+            @RequestParam(value = "rent_id") Long rent_id) throws IOException {
+        response.setContentType("text/html; charset= UTF-8");
+        response.setCharacterEncoding("UTF8");
+
+        PrintWriter out = response.getWriter();
+        adminService.renewRent(rent_id, out);
+    }
 }

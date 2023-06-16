@@ -40,7 +40,7 @@
             <td th:text="${rent.is_continue}"></td>
 
             <td><button th:onclick="javascript:returnBook([[${rent.rent_id}]])">반납</button></td>
-            <td><button th:onclick="javascript:returnBook([[${rent.rent_id}]])">연장</button></td>
+            <td><button th:onclick="javascript:renewBook([[${rent.rent_id}]])">연장</button></td>
         </tr>
         </tbody>
     </table>

@@ -39,10 +39,12 @@
         <td th:text="${rent.spare_dt}"></td>
         <td th:text="${rent.is_continue}"></td>
 
-        <td><a id="continueBtn" th:href="@{/books/{id}/continue(id = ${rent.rent_id})}">연장</a></td>
+        <td><button th:onclick="javascript:mybookRenew([[${rent.rent_id}]])">연장</button></td>
       </tr>
       </tbody>
     </table>
 </div> <!-- /container -->
 </body>
 </html>
+<script src="/js/rent.js">
+</script>
