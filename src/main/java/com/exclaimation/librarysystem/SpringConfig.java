@@ -39,7 +39,7 @@ public class SpringConfig {
 
     @Bean
     public ReserveService reserveService(){
-        return new ReserveService(reserveRepository);
+        return new ReserveService(reserveRepository, bookRepository);
     }
 
     @Bean

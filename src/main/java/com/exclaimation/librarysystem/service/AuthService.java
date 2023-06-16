@@ -22,7 +22,6 @@ public class AuthService {
     private final StudentRepository repository;
     private final PasswordEncoder passwordEncoder;
 
-
     public AuthService(StudentRepository repository, PasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
@@ -58,5 +57,4 @@ public class AuthService {
             throw new DuplicateRequestException();
         }
     }
-
 }

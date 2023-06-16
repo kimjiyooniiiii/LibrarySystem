@@ -1,6 +1,8 @@
 package com.exclaimation.librarysystem.service;
 
+import com.exclaimation.librarysystem.entity.Book;
 import com.exclaimation.librarysystem.entity.ReserveEntity;
+import com.exclaimation.librarysystem.repository.BookRepository;
 import com.exclaimation.librarysystem.repository.ReserveRepository;
 
 import java.time.LocalDate;
@@ -9,9 +11,11 @@ import java.util.*;
 public class ReserveService {
 
     private final ReserveRepository reserveRepository;
+    private final BookRepository bookRepository;
 
-    public ReserveService(ReserveRepository reserveRepository) {
+    public ReserveService(ReserveRepository reserveRepository, BookRepository bookRepository) {
         this.reserveRepository = reserveRepository;
+        this.bookRepository = bookRepository;
     }
 
     public void makeReservation(Long book_id, String student_id){
@@ -22,8 +26,11 @@ public class ReserveService {
             return;
         }
 
+        Book book = bookRepository.findById(book_id).orElseThrow();
+
         ReserveEntity reserveEntity = new ReserveEntity();
         reserveEntity.setBook_id(book_id);
+        reserveEntity.setBook_name(book.getTitle());
         reserveEntity.setStudent_id(student_id);
         reserveEntity.setReservation_date(LocalDate.now());
         reserveRepository.save(reserveEntity);
