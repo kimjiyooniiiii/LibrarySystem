@@ -1,4 +1,4 @@
-# LibrarySystem
+# LibrarySystem 웹 프로젝트
 
 ## 1. 이용자 서비스
   - Spring Security 보안 로그인
